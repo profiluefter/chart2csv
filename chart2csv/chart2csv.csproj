@@ -5,4 +5,14 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="SixLabors.ImageSharp" Version="1.0.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="chart.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

@@ -1,4 +1,6 @@
 ﻿using System;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
 
 namespace chart2csv
 {
@@ -6,7 +8,8 @@ namespace chart2csv
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var image = Image.Load<Rgba32>("chart.png");
+            Console.WriteLine(image[0,0]);
         }
     }
 }

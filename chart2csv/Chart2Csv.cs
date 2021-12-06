@@ -62,28 +62,19 @@ namespace chart2csv
             exclude ??= new List<Pixel>();
             exclude.Add(pixel);
 
-            var adjacent = new Pixel(pixel.X - 1, pixel.Y);
-            if (pixels.Contains(adjacent) && !exclude.Contains(adjacent))
+            for (int x = -1; x <= 1; x++)
             {
-                group.AddRange(GetGroupOfPixels(pixels, adjacent, exclude));
-            }
-            
-            adjacent = new Pixel(pixel.X + 1, pixel.Y);
-            if (pixels.Contains(adjacent) && !exclude.Contains(adjacent))
-            {
-                group.AddRange(GetGroupOfPixels(pixels, adjacent, exclude));
-            }
-            
-            adjacent = new Pixel(pixel.X, pixel.Y - 1);
-            if (pixels.Contains(adjacent) && !exclude.Contains(adjacent))
-            {
-                group.AddRange(GetGroupOfPixels(pixels, adjacent, exclude));
-            }
-            
-            adjacent = new Pixel(pixel.X, pixel.Y + 1);
-            if (pixels.Contains(adjacent) && !exclude.Contains(adjacent))
-            {
-                group.AddRange(GetGroupOfPixels(pixels, adjacent, exclude));
+                for (int y = -1; y <= 1; y++)
+                {
+                    if (x != 0 || y != 0)
+                    {
+                        var adjacent = new Pixel(pixel.X + x, pixel.Y + y);
+                        if (pixels.Contains(adjacent) && !exclude.Contains(adjacent))
+                        {
+                            group.AddRange(GetGroupOfPixels(pixels, adjacent, exclude));
+                        }
+                    }
+                }
             }
 
             return group;

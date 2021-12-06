@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
@@ -13,16 +14,54 @@ namespace chart2csv
         {
             var image = Image.Load<Rgba32>("chart.png");
 
-            Chart2Csv.GetPoints(image, GraphHex)
-                .ToList()
-                .ForEach(x =>
+            var points = Chart2Csv.GetPoints(image, GraphHex)
+                .GroupBy(x => x.X)
+                .OrderBy(x => x.Key)
+                .ToList();
+
+            var orderedPoints = new List<Point>();
+
+            /*
+             * This loop processes each pair of points that share the same X coordinate (are above each other) and finds
+             * the point that is nearest to the previous and next point. This is done to improve accuracy when
+             * interpolating values to the next or previous point.
+             */
+            for (var index = 0; index < points.Count; index++)
+            {
+                var pointsHere = points[index];
+                if (pointsHere.Count() == 1)
                 {
-                    image[(int)x.X, (int)x.Y] = Rgba32.ParseHex("FF0000FF");
-                    Console.WriteLine($"{x.X}|{x.Y}");
-                });
-            
+                    orderedPoints.Add(pointsHere.Single());
+                    continue;
+                }
+
+                var nearestPointToPrevious = pointsHere
+                    .OrderBy(point => Math.Abs(point.Y - orderedPoints.Last().Y))
+                    .First();
+                orderedPoints.Add(nearestPointToPrevious);
+
+                if (index + 1 == points.Count)
+                    continue;
+                var nextPoints = points[index + 1];
+                if (nextPoints.Count() != 1)
+                    continue;
+                var nextPoint = nextPoints.Single();
+
+                var nearestPointToNext = pointsHere
+                    .OrderBy(point => Math.Abs(point.Y - nextPoint.Y))
+                    .First();
+                if (!nearestPointToNext.Equals(nearestPointToPrevious))
+                    orderedPoints.Add(nearestPointToNext);
+            }
+
+            foreach (var point in orderedPoints)
+            {
+                image[(int)point.X, (int)point.Y] = Rgba32.ParseHex("FF0000FF");
+                Console.WriteLine($"{point.X:0000.00}  {point.Y:0000.00}");
+            }
+
             image.Save("output.png");
-            
+
             //Console.WriteLine(new Point(139, 591).TranslateYToValue(1200, 0, 10000));
         }
     }

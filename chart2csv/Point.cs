@@ -15,11 +15,6 @@ namespace chart2csv
             Y = y;
         }
 
-        public static Point AverageFromPixels(HashSet<Pixel> pixels) => new(
-            pixels.Average(x => x.X),
-            pixels.Average(x => x.Y)
-        );
-
         public double TranslateYToValue(int totalPixels, int startPixel, int startValue)
         {
             return Math.Pow(10, (Y - startPixel) / totalPixels) * startValue;

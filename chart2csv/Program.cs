@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Processing;
 
 namespace chart2csv
 {
@@ -54,11 +56,13 @@ namespace chart2csv
                     orderedPoints.Add(nearestPointToNext);
             }
 
-            foreach (var point in orderedPoints)
-            {
-                image[(int)point.X, (int)point.Y] = Rgba32.ParseHex("FF0000FF");
-                Console.WriteLine($"{point.X:0000.00}  {point.Y:0000.00}");
-            }
+            image.Mutate(context => context.DrawLines(
+                Color.ParseHex("FF0000FF"),
+                1f,
+                orderedPoints
+                    .Select(x => new PointF((float)x.X, (float)x.Y))
+                    .ToArray()
+            ));
 
             image.Save("output.png");
 

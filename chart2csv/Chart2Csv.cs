@@ -8,7 +8,7 @@ namespace chart2csv
 {
     public static class Chart2Csv
     {
-        public static HashSet<Point> GetPoints(Image<Rgba32> image, string hex) =>
+        public static HashSet<Point> GetPoints(Image<Rgba32> image, Color hex) =>
             GetGroupsOfPixels(GetPixelsWithAdjacents(image, hex))
                 .Select(pixels => new Point(
                     pixels.Average(x => x.X),
@@ -19,16 +19,16 @@ namespace chart2csv
         /**
          * Searches an image for plus-shaped patterns where all pixels have the specified color.
          */
-        private static HashSet<Pixel> GetPixelsWithAdjacents(Image<Rgba32> image, string hex)
+        private static HashSet<Pixel> GetPixelsWithAdjacents(Image<Rgba32> image, Color hex)
         {
             var pixels = new HashSet<Pixel>();
             for (var x = 1; x < image.Width - 1; x++)
             for (var y = 1; y < image.Height - 1; y++)
-                if (image[x, y].ToHex() == hex &&
-                    image[x - 1, y].ToHex() == hex &&
-                    image[x + 1, y].ToHex() == hex &&
-                    image[x, y - 1].ToHex() == hex &&
-                    image[x, y + 1].ToHex() == hex)
+                if ((Color)image[x, y] == hex &&
+                    (Color)image[x - 1, y] == hex &&
+                    (Color)image[x + 1, y] == hex &&
+                    (Color)image[x, y - 1] == hex &&
+                    (Color)image[x, y + 1] == hex)
                 {
                     pixels.Add(new Pixel(x, y));
                 }

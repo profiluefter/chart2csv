@@ -10,7 +10,7 @@ namespace chart2csv
 {
     internal static class Program
     {
-        private const string GraphHex = "3366CCFF";
+        private static readonly Color GraphHex = Color.ParseHex("3366CCFF");
 
         private static void Main()
         {

@@ -8,56 +8,56 @@ namespace chart2csv
 {
     public static class Chart2Csv
     {
-        public static List<Point> GetPoints(Image<Rgba32> image, string hex)
+        public static HashSet<Point> GetPoints(Image<Rgba32> image, string hex)
         {
             var pixels = GetPixelsWithAdjacents(image, hex);
 
             return GetGroupsOfPixels(pixels)
                 .Select(Point.AverageFromPixels)
-                .ToList();
+                .ToHashSet();
         }
 
-        private static List<Pixel> GetPixelsWithAdjacents(Image<Rgba32> image, string hex)
+        /**
+         * Searches an image for plus-shaped patterns where all pixels have the specified color.
+         */
+        private static HashSet<Pixel> GetPixelsWithAdjacents(Image<Rgba32> image, string hex)
         {
-            var pixels = new List<Pixel>();
+            var pixels = new HashSet<Pixel>();
             for (var x = 1; x < image.Width - 1; x++)
-            {
-                for (var y = 1; y < image.Height - 1; y++)
+            for (var y = 1; y < image.Height - 1; y++)
+                if (image[x, y].ToHex() == hex &&
+                    image[x - 1, y].ToHex() == hex &&
+                    image[x + 1, y].ToHex() == hex &&
+                    image[x, y - 1].ToHex() == hex &&
+                    image[x, y + 1].ToHex() == hex)
                 {
-                    if (image[x, y].ToHex() == hex &&
-                        image[x - 1, y].ToHex() == hex &&
-                        image[x + 1, y].ToHex() == hex &&
-                        image[x, y - 1].ToHex() == hex &&
-                        image[x, y + 1].ToHex() == hex)
-                    {
-                        pixels.Add(new Pixel(x, y));
-                    }
+                    pixels.Add(new Pixel(x, y));
                 }
-            }
 
             return pixels;
         }
 
-        private static List<List<Pixel>> GetGroupsOfPixels(List<Pixel> pixels)
+        private static HashSet<HashSet<Pixel>> GetGroupsOfPixels(HashSet<Pixel> pixels)
         {
-            var groupsOfPixels = new List<List<Pixel>>();
-            var usedPixels = new List<Pixel>();
+            var groupsOfPixels = new HashSet<HashSet<Pixel>>();
+            var usedPixels = new HashSet<Pixel>();
 
             foreach (var groupOfPixels in pixels
                          .Where(x => !usedPixels.Contains(x))
                          .Select(x => GetGroupOfPixels(pixels, x)))
             {
-                usedPixels.AddRange(groupOfPixels);
+                usedPixels.UnionWith(groupOfPixels);
                 groupsOfPixels.Add(groupOfPixels);
             }
 
             return groupsOfPixels;
         }
 
-        private static List<Pixel> GetGroupOfPixels(List<Pixel> pixels, Pixel pixel, List<Pixel> exclude = null)
+        private static HashSet<Pixel> GetGroupOfPixels(HashSet<Pixel> pixels, Pixel pixel,
+            HashSet<Pixel> exclude = null)
         {
-            var group = new List<Pixel> { pixel };
-            exclude ??= new List<Pixel>();
+            var group = new HashSet<Pixel> { pixel };
+            exclude ??= new HashSet<Pixel>();
             exclude.Add(pixel);
 
             for (var x = -1; x <= 1; x++)
@@ -66,7 +66,7 @@ namespace chart2csv
                 if (x == 0 && y == 0) continue;
                 var adjacent = new Pixel(pixel.X + x, pixel.Y + y);
                 if (pixels.Contains(adjacent) && !exclude.Contains(adjacent))
-                    group.AddRange(GetGroupOfPixels(pixels, adjacent, exclude));
+                    group.UnionWith(GetGroupOfPixels(pixels, adjacent, exclude));
             }
 
             return group;

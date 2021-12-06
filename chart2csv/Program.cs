@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
@@ -13,6 +14,7 @@ namespace chart2csv
             var image = Image.Load<Rgba32>("chart.png");
 
             Chart2Csv.GetPoints(image, GraphHex)
+                .ToList()
                 .ForEach(x =>
                 {
                     image[(int)x.X, (int)x.Y] = Rgba32.ParseHex("FF0000FF");
@@ -20,6 +22,8 @@ namespace chart2csv
                 });
             
             image.Save("output.png");
+            
+            //Console.WriteLine(new Point(139, 591).TranslateYToValue(1200, 0, 10000));
         }
     }
 }

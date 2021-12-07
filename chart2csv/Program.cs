@@ -24,6 +24,16 @@ namespace chart2csv
                     : new Point(p.Average(x => x.X), p.Average(x => x.Y)))
                 .ToList();
 
+            var xAxis = XAxis.DetectXAxis(image);
+            var yAxis = YAxis.DetectYAxis(image);
+
+            var csvLines = points
+                .Select(x => (xAxis.GetValue(x.X), yAxis.GetValue(x.Y)))
+                .Select(x => $"{x.Item1:dd.MM.yyyy hh:mm};{x.Item2}")
+                .Prepend("DATE;BALANCE USD");
+            
+            File.WriteAllLines("output.csv", csvLines);
+
             image.Mutate(context => context.DrawLines(
                 Color.ParseHex("FF0000FF"),
                 1f,

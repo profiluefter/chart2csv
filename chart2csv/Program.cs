@@ -14,7 +14,7 @@ namespace chart2csv
 
         private static void Main()
         {
-            var image = Image.Load<Rgba32>("chart.png");
+            var image = Image.Load<Rgba32>("charts/chart.png");
 
             var points = Chart2Csv.GetPoints(image, GraphHex)
                 .GroupBy(x => x.X)

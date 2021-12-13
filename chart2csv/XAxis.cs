@@ -15,7 +15,7 @@ public class XAxis
     }
 
     /**
-     * Gets the value for a given x coordinate (top = 0).
+     * Gets the date value for a given x coordinate (top = 0).
      */
     public DateTime GetValue(double x)
     {

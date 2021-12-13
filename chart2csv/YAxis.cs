@@ -15,7 +15,7 @@ public class YAxis
     }
 
     /**
-     * Gets the date value for a given y coordinate (left = 0). 
+     * Gets the value for a given y coordinate (left = 0). 
      */
     public double GetValue(double y)
     {

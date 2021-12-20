@@ -13,7 +13,7 @@ internal static class Program
 
     private static void Main()
     {
-        var image = Image.Load<Rgba32>("charts/chart.png");
+        var image = Image.Load<Rgba32>("charts/00.0-08.0-35.0-35.0-40.0-30.0-01.0-04.0-02.0-NONE.png");
 
         var points = Chart2Csv.GetPoints(image, GraphHex)
             .GroupBy(x => x.X)

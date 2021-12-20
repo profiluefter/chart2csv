@@ -1,4 +1,4 @@
-﻿using System.IO;
+﻿using System;
 using System.Linq;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Drawing.Processing;
@@ -37,9 +37,25 @@ internal static class Program
             Color.ParseHex("FF0000FF"),
             1f,
             points
-                .Select(x => new PointF((float)x.X, (float)x.Y))
+                .Select(x => new PointF((float) x.X, (float) x.Y))
                 .ToArray()
         ));
+
+        var cornerColor = Color.ParseHex("B2B2B2");
+        var lineColor = Color.ParseHex("C0C0C0");
+        var backgroundColor = Color.ParseHex("FFFFFF");
+
+        for (var i = 0; i < image.Width; i++)
+        for (var j = 0; j < image.Height; j++)
+        {
+            if ((Color) image[i, j] != cornerColor ||
+                (Color) image[i, j - 1] != lineColor ||
+                (Color) image[i, j + 1] != backgroundColor ||
+                (Color) image[i + 1, j] != lineColor ||
+                (Color) image[i - 1, j] != backgroundColor) continue;
+            Console.Out.WriteLine($"Chart Origin Point: {i} {j}");
+            image[i, j] = Color.Aqua;
+        }
 
         image.Save("output.png");
 

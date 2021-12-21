@@ -59,6 +59,48 @@ internal static class Program
             imagePoints
         ));
 
+        var origin = FindChartOrigin(image, newImage);
+
+        var (chartWidth, chartHeight) = FindChartDimensions(image, newImage, origin);
+
+        Console.WriteLine($"Chart is {chartWidth}px wide and {chartHeight}px high");
+
+        image.Save("output.png");
+        newImage.Save("output-only.png");
+    }
+
+    private static (int chartWidth, int chartHeight) FindChartDimensions(Image<Rgba32> image, Image<Rgba32> newImage, Pixel origin)
+    {
+        var chartWidth = 1;
+        while ((Color) image[origin.X + chartWidth, origin.Y] == LineColor ||
+               (Color) image[origin.X + chartWidth, origin.Y] == LineXLabelColor ||
+               (Color) image[origin.X + chartWidth, origin.Y] == LineXEndColor)
+        {
+            image[origin.X + chartWidth, origin.Y] = Color.Green;
+            newImage[origin.X + chartWidth, origin.Y] = Color.Green;
+            chartWidth++;
+        }
+
+        var chartHeight = 1;
+        while ((Color) image[origin.X, origin.Y - chartHeight] == LineColor ||
+               (Color) image[origin.X, origin.Y - chartHeight] == LineYMarkerColor ||
+               (Color) image[origin.X, origin.Y - chartHeight] == LineYLabelColor ||
+               (Color) image[origin.X, origin.Y - chartHeight] == LineYEndColor)
+        {
+            image[origin.X, origin.Y - chartHeight] = Color.Green;
+            newImage[origin.X, origin.Y - chartHeight] = Color.Green;
+            chartHeight++;
+        }
+
+        // Compensate for origin point
+        chartWidth--;
+        chartHeight--;
+        
+        return (chartWidth, chartHeight);
+    }
+
+    private static Pixel FindChartOrigin(Image<Rgba32> image, Image<Rgba32> newImage)
+    {
         Pixel? origin = null;
 
         for (var i = 0; i < image.Width; i++)
@@ -82,35 +124,6 @@ internal static class Program
 
         if (origin == null)
             throw new Exception("No origin point found");
-
-        Pixel originPoint = origin.Value;
-
-        var chartWidth = 1;
-        while ((Color) image[originPoint.X + chartWidth, originPoint.Y] == LineColor ||
-               (Color) image[originPoint.X + chartWidth, originPoint.Y] == LineXLabelColor ||
-               (Color) image[originPoint.X + chartWidth, originPoint.Y] == LineXEndColor)
-        {
-            image[origin.Value.X + chartWidth, origin.Value.Y] = Color.Green;
-            newImage[origin.Value.X + chartWidth, origin.Value.Y] = Color.Green;
-            chartWidth++;
-        }
-
-        var chartHeight = 1;
-        while ((Color) image[originPoint.X, originPoint.Y - chartHeight] == LineColor ||
-               (Color) image[originPoint.X, originPoint.Y - chartHeight] == LineYMarkerColor ||
-               (Color) image[originPoint.X, originPoint.Y - chartHeight] == LineYLabelColor ||
-               (Color) image[originPoint.X, originPoint.Y - chartHeight] == LineYEndColor)
-        {
-            image[originPoint.X, originPoint.Y - chartHeight] = Color.Green;
-            newImage[originPoint.X, originPoint.Y - chartHeight] = Color.Green;
-            chartHeight++;
-        }
-
-        chartWidth--;
-
-        Console.WriteLine($"Chart is {chartWidth}px wide and {chartHeight}px high");
-
-        image.Save("output.png");
-        newImage.Save("output-only.png");
+        return origin.Value;
     }
 }

@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
+using static chart2csv.Constants;
 
 namespace chart2csv;
 
@@ -9,9 +11,18 @@ namespace chart2csv;
  */
 public class XAxis
 {
-    public static XAxis DetectXAxis(Image<Rgba32> image)
+    private readonly int _start;
+    private readonly int _end;
+
+    private XAxis(int xStart, int xEnd)
     {
-        throw new NotImplementedException();
+        _start = xStart;
+        _end = xEnd;
+    }
+
+    public static XAxis DetectXAxis(Image<Rgba32> image, Image<Rgba32> newImage, Pixel origin, (int, int) dimensions)
+    {
+        return new XAxis(origin.X, origin.X + dimensions.Item1);
     }
 
     /**

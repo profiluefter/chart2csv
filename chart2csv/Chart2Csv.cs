@@ -23,11 +23,18 @@ public static class Chart2Csv
         var pixels = new HashSet<Pixel>();
         for (var x = 1; x < image.Width - 1; x++)
         for (var y = 1; y < image.Height - 1; y++)
-            if ((Color)image[x, y] == hex &&
-                (Color)image[x - 1, y] == hex &&
-                (Color)image[x + 1, y] == hex &&
-                (Color)image[x, y - 1] == hex &&
-                (Color)image[x, y + 1] == hex)
+            if ((
+                    (Color) image[x, y] == hex &&
+                    (Color) image[x - 1, y] == hex &&
+                    (Color) image[x + 1, y] == hex &&
+                    (Color) image[x, y - 1] == hex &&
+                    (Color) image[x, y + 1] == hex
+                ) || (
+                    (Color) image[x, y] == hex &&
+                    (Color) image[x + 1, y] == hex &&
+                    (Color) image[x, y + 1] == hex &&
+                    (Color) image[x + 1, y + 1] == hex
+                ))
             {
                 pixels.Add(new Pixel(x, y));
             }
@@ -54,7 +61,7 @@ public static class Chart2Csv
     private static HashSet<Pixel> GetGroupOfPixels(HashSet<Pixel> pixels, Pixel pixel,
         HashSet<Pixel> exclude = null)
     {
-        var group = new HashSet<Pixel> { pixel };
+        var group = new HashSet<Pixel> {pixel};
         exclude ??= new HashSet<Pixel>();
         exclude.Add(pixel);
 

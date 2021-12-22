@@ -11,6 +11,9 @@ namespace chart2csv;
  */
 public class XAxis
 {
+    private static readonly DateTime StartDate = new(2018, 01, 01, 23, 00, 00);
+    private static readonly DateTime EndDate = new(2021, 02, 01, 06, 00, 00);
+    
     private readonly int _start;
     private readonly int _end;
 
@@ -28,8 +31,18 @@ public class XAxis
     /**
      * Gets the date value for a given x coordinate (top = 0).
      */
-    public DateTime GetValue(double x)
+    public DateTime GetValue(double x) // TODO: check if the data not accurate or there is an error here
     {
-        throw new NotImplementedException();
+        var startValue = new DateTimeOffset(StartDate).ToUnixTimeSeconds();
+        var endValue = new DateTimeOffset(EndDate).ToUnixTimeSeconds();
+        var valueRange = endValue - startValue;
+
+        var range = _end - _start;
+        var relativePosition = x - _start;
+
+        var percent = relativePosition / range;
+
+        var value = percent * valueRange + startValue;
+        return DateTimeOffset.FromUnixTimeSeconds((long) value).DateTime;
     }
 }

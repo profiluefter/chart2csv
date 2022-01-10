@@ -12,9 +12,4 @@ public readonly struct Point
         X = x;
         Y = y;
     }
-
-    public double TranslateYToValue(int totalPixels, int startPixel, int startValue)
-    {
-        return Math.Pow(10, (Y - startPixel) / totalPixels) * startValue;
-    }
 }

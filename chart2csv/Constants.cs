@@ -1,3 +1,4 @@
+using System;
 using SixLabors.ImageSharp;
 
 namespace chart2csv;
@@ -16,4 +17,6 @@ public static class Constants
     public static readonly Color LineYEndColor = Color.ParseHex("CFCFCF");
 
     public static readonly Color NumberZero = Color.ParseHex("7A7A7A");
+
+    public static readonly double Percentage = 1-Math.Log10(9);
 }

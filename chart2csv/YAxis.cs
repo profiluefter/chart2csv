@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using static chart2csv.Constants;
@@ -35,6 +36,8 @@ public class YAxis
 
         var numbers = new Dictionary<int, int>();
 
+        //TODO extrapolate first with previous line
+        
         foreach (var (y, count) in digits)
         {
             var realY = y;
@@ -68,8 +71,9 @@ public class YAxis
     /**
      * Gets the value for a given y coordinate (left = 0). 
      */
-    public double GetValue(double y)
-    {
-        throw new NotImplementedException();
+    public double GetValue(double y) {
+        var prevPixel = _numbers.Keys.Last(x => x < y);
+        var totalPixels = _numbers.Skip(1).First().Key - _numbers.First().Key;
+        return Math.Pow(10, (y - prevPixel) / totalPixels) * prevPixel;
     }
 }

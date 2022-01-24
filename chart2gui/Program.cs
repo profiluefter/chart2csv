@@ -4,14 +4,18 @@ using SFML.System;
 using SFML.Window;
 
 var window = new RenderWindow(new VideoMode(1280, 720), "weird flex" /*, Styles.Fullscreen*/);
+window.SetMouseCursorVisible(false);
 
 window.Closed += (_, _) => window.Close();
-
-var introMusic = new Music("og-sfx/intro.ogg");
 
 var chartImage = new Image("charts/00.0-08.0-35.0-35.0-40.0-30.0-01.0-04.0-02.0-NONE.png");
 var chartSprite = new Sprite(new Texture(chartImage));
 
+var cursorImage = new Image("og-gfx/hand.bmp");
+cursorImage.CreateMaskFromColor(new Color(255,0,255));
+var cursorSprite = new Sprite(new Texture(cursorImage));
+
+var introMusic = new Music("og-sfx/intro.ogg");
 introMusic.Play();
 
 while (window.IsOpen)
@@ -21,6 +25,9 @@ while (window.IsOpen)
     
     if (introMusic.PlayingOffset > Time.FromSeconds(6))
         window.Draw(chartSprite);
+
+    cursorSprite.Position = (Vector2f)Mouse.GetPosition(window);
+    window.Draw(cursorSprite);
     
     window.Display();
 }

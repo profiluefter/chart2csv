@@ -25,7 +25,7 @@ internal static class Program
             .ToList();
 
         var imagePoints = points
-            .Select(x => new PointF((float) x.X, (float) x.Y))
+            .Select(x => new PointF((float)x.X, (float)x.Y))
             .ToArray();
 
         newImage.Mutate(context => context.DrawLines(
@@ -59,19 +59,19 @@ internal static class Program
         Pixel origin)
     {
         var chartWidth = 1;
-        while ((Color) image[origin.X + chartWidth, origin.Y] == LineColor ||
-               (Color) image[origin.X + chartWidth, origin.Y] == LineXLabelColor ||
-               (Color) image[origin.X + chartWidth, origin.Y] == LineXEndColor)
+        while ((Color)image[origin.X + chartWidth, origin.Y] == LineColor ||
+               (Color)image[origin.X + chartWidth, origin.Y] == LineXLabelColor ||
+               (Color)image[origin.X + chartWidth, origin.Y] == LineXEndColor)
         {
             newImage[origin.X + chartWidth, origin.Y] = Color.Green;
             chartWidth++;
         }
 
         var chartHeight = 1;
-        while ((Color) image[origin.X, origin.Y - chartHeight] == LineColor ||
-               (Color) image[origin.X, origin.Y - chartHeight] == LineYMarkerColor ||
-               (Color) image[origin.X, origin.Y - chartHeight] == LineYLabelColor ||
-               (Color) image[origin.X, origin.Y - chartHeight] == LineYEndColor)
+        while ((Color)image[origin.X, origin.Y - chartHeight] == LineColor ||
+               (Color)image[origin.X, origin.Y - chartHeight] == LineYMarkerColor ||
+               (Color)image[origin.X, origin.Y - chartHeight] == LineYLabelColor ||
+               (Color)image[origin.X, origin.Y - chartHeight] == LineYEndColor)
         {
             newImage[origin.X, origin.Y - chartHeight] = Color.Green;
             chartHeight++;
@@ -91,11 +91,11 @@ internal static class Program
         for (var i = 0; i < image.Width; i++)
         for (var j = 0; j < image.Height; j++)
         {
-            if ((Color) image[i, j] != LineCornerColor ||
-                (Color) image[i, j - 1] != LineColor ||
-                (Color) image[i, j + 1] != BackgroundColor ||
-                (Color) image[i + 1, j] != LineColor ||
-                (Color) image[i - 1, j] != BackgroundColor) continue;
+            if ((Color)image[i, j] != LineCornerColor ||
+                (Color)image[i, j - 1] != LineColor ||
+                (Color)image[i, j + 1] != BackgroundColor ||
+                (Color)image[i + 1, j] != LineColor ||
+                (Color)image[i - 1, j] != BackgroundColor) continue;
 
             Console.Out.WriteLine($"Chart Origin Point: {i} {j}");
             newImage[i, j] = Color.Aqua;

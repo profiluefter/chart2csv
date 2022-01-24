@@ -15,4 +15,10 @@
       <ProjectReference Include="..\chart2csv\chart2csv.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="og-sfx\intro.ogg">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

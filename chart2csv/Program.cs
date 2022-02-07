@@ -15,8 +15,10 @@ internal static class Program
     {
         var image = Image.Load<Rgba32>("charts/00.0-08.0-35.0-35.0-40.0-30.0-01.0-04.0-02.0-NONE.png");
         var newImage = new Image<Rgba32>(image.Width, image.Height);
+        var pointClusterImage = new Image<Rgba32>(image.Width, image.Height);
+        pointClusterImage.Mutate(context => context.DrawImage(image, 1));
 
-        var points = Chart2Csv.GetPoints(image, PointColor)
+        var points = Chart2Csv.GetPoints(image, PointColor, pointClusterImage)
             .GroupBy(x => x.X)
             .OrderBy(x => x.Key)
             .Select(p => p.Count() == 1
@@ -53,6 +55,8 @@ internal static class Program
         image.Save("output.png");
         newImage.Mutate(context => context.BackgroundColor(Color.White));
         newImage.Save("output-only.png");
+        pointClusterImage.Mutate(context => context.BackgroundColor(Color.White));
+        pointClusterImage.Save("point-cluster.png");
     }
 
     private static (int chartWidth, int chartHeight) FindChartDimensions(Image<Rgba32> image, Image<Rgba32> newImage,

@@ -23,9 +23,9 @@ public class XAxis
         _end = xEnd;
     }
 
-    public static XAxis DetectXAxis(Image<Rgba32> image, Image<Rgba32> newImage, Pixel origin, (int, int) dimensions)
+    public static XAxis DetectXAxis(Point first, Point last)
     {
-        return new XAxis(origin.X, origin.X + dimensions.Item1);
+        return new XAxis((int)first.X, (int)last.X);
     }
 
     /**

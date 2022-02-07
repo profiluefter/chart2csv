@@ -41,7 +41,7 @@ internal static class Program
 
         Console.WriteLine($"Chart is {chartWidth}px wide and {chartHeight}px high");
 
-        var xAxis = XAxis.DetectXAxis(image, newImage, origin, (chartWidth, chartHeight));
+        var xAxis = XAxis.DetectXAxis(points[0], points[^1]);
         var yAxis = YAxis.DetectYAxis(image, newImage, origin, (chartWidth, chartHeight));
 
         var csvLines = points

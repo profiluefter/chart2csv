@@ -1,0 +1,48 @@
+Skript 1. Entwurf - Präsi wüad i bei jedem Task wos kuaz sogn oda so, des hob i oba nd gaunz ausorbeit, wei i mein Job grod eha in da Demo sehg
+```
+Skript:
++ Präsi: Aunsotz gräßares Problem ois Programmierung, sehr vü Diskussionen und Beratung, nur Gurtna und Schönberger code
+	- RUN
+	- Phone ringing
+	- distorted: Hello, I need the date you created the graphs to.
+	- Chat from Welsch: I've sent u your task description, please have it finished by the end of this week or we won't verify your internship.
+	- Click on attached file: Shows Task Description on screen
++ Präsi: wir erklärn de Task
+	- Task-Notification: Search the Internet
+		- Display shows Google with 1st Result Janik's Stack Overflow Question
++ Präsi: Wir hom koane geeigneten Libs oda so gfundn
+	- Chat from Welsch: I nearly forgot to send u the files, they are all the exact same format and fonts, so just hardcode it.
++ Präsi: Des woa so nd woah und hod bei uns zu mehr Vawirrung gführt
+	- Task-Notif: Find the difference
+		- Pictures side to side, slowly zooming in on the numbers
+	- Subtitle: Just my luck
+	- Text to Welsch: sth ain't right, do u have more?
++ Präsi: Des 1. wos wia dau hom, woa oiso herausfindn, wie ma de Zoihn an da y-Achse bestimman, wobei mehrere Ansätze
+	- Task-Notif: Recognise the numbers on the y-axis
+		- Click on them
+	- Welsch: some more in the right format.
+		- click on attachments reveals picture of Graph with blue Cluster
++ Präsi: Maunche Beispübüda san fost scho aussichtslos erschienen und so homma a extra Behaundlung vu große Cluster braucht
+	- Task-Notif: Recognise the dots
+		- Subtitle: Hopefully it doesn't have to be that exact...
+		- Click to zoom on Cluster
+		- Clicks in that cluster to add points
+	- Audio-feed: You have 1 voice message. *peep*
+	- Distorted: Hey, it's me again. I need that data by tomorrow morning, why haven't u sent it yet?
+	- Welsch: I need you to work overtime, deadline tmr morning, sorry
++ Präsi: Overtime haßt in dem Foi, dass beide Fabis daham nu drau goabeit hom
+	- Subtitle: I'm not even halfway finished...
+	- Task-Notif: Recognise axis'
+		- Click on y-axis and x-axis (them turning green or sth)
+	- Task-Notif: Recognise Dates
+		- Click on date
+	- Task Notif: Get the logarithmic y-values
+		- Subtitle: Now the hardest for last
+		- Click on lines parallel to x-Axis
+	- Task Notif: Commit
+		- Eyes shutting, vision blurry, click on commit before your eyes completely close
+	- Black Screen
+	- CSV in bright white
+	- Black screen
+	- Welsch: Well done, now create a marketing video (or playable demo) so we can sell that.
+```

@@ -36,8 +36,6 @@ public class YAxis
 
         var numbers = new Dictionary<int, int>();
 
-        //TODO extrapolate first with previous line
-        
         foreach (var (y, count) in digits)
         {
             var realY = y;
@@ -62,7 +60,38 @@ public class YAxis
 
             var number = (int) Math.Pow(10, count);
             Console.WriteLine($"Found number {number} at y-position {y} with real position of {realY}");
-            numbers[y] = number;
+            numbers[realY] = number;
+        }
+
+        switch (numbers.Count) {
+            case > 1: {
+                var firstTwoNumbers = numbers
+                    .OrderByDescending(x => x.Key)
+                    .Take(2)
+                    .ToArray();
+            
+                var diff = firstTwoNumbers[0].Key - firstTwoNumbers[1].Key;
+                numbers[firstTwoNumbers[0].Key + diff] = firstTwoNumbers[0].Value / 10;
+                break;
+            }
+            case 1: {
+                var firstNumber = numbers
+                    .OrderByDescending(x => x.Key)
+                    .First();
+
+                for (var i = firstNumber.Key+1; i < origin.Y; i++) {
+                
+                    if ((Color) image[origin.X, i] != LineYMarkerColor) continue;
+                
+                    var diff = i - firstNumber.Key;
+                    var actualDiff = (int) (diff / Percentage);
+                    numbers[firstNumber.Key + actualDiff] = firstNumber.Value / 10;
+                        
+                    break;
+                }
+
+                break;
+            }
         }
 
         return new YAxis(numbers);
@@ -72,8 +101,11 @@ public class YAxis
      * Gets the value for a given y coordinate (left = 0). 
      */
     public double GetValue(double y) {
-        var prevPixel = _numbers.Keys.Last(x => x < y);
-        var totalPixels = _numbers.Skip(1).First().Key - _numbers.First().Key;
-        return Math.Pow(10, (y - prevPixel) / totalPixels) * prevPixel;
+        if (_numbers.Count < 2) throw new Exception("not enough markers to calculate y value"); 
+            
+        var prevPixel = _numbers.OrderByDescending(x => x.Key).Last(x => x.Key > y);
+        var totalPixels = _numbers.OrderByDescending(x => x.Key).First().Key 
+                          - _numbers.OrderByDescending(x => x.Key).Skip(1).First().Key;
+        return Math.Pow(10, (prevPixel.Key - y) / totalPixels) * prevPixel.Value;
     }
 }

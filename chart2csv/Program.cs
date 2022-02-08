@@ -13,7 +13,10 @@ internal static class Program
 {
     private static void Main()
     {
-        var image = Image.Load<Rgba32>("charts/00.0-08.0-35.0-35.0-40.0-30.0-01.0-04.0-02.0-NONE.png");
+        var image = Image.Load<Rgba32>(
+            //"charts/00.0-08.0-35.0-35.0-40.0-30.0-01.0-04.0-02.0-NONE.png" //default example
+            "charts/00.0-08.0-46.0-35.0-100.0-40.0-01.0-04.0-02.0-NONE.png" //example with only one y marker
+        );
         var newImage = new Image<Rgba32>(image.Width, image.Height);
 
         var points = Chart2Csv.GetPoints(image, PointColor)

@@ -368,6 +368,10 @@ PrefabInstance:
       value: 'Objective: Find the difference'
       objectReference: {fileID: 0}
     - target: {fileID: 6899603116214237967, guid: 95331c3d810b58f4e8118e67d5abf398, type: 3}
+      propertyPath: m_fontSize
+      value: 8.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6899603116214237967, guid: 95331c3d810b58f4e8118e67d5abf398, type: 3}
       propertyPath: m_fontColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -378,6 +382,10 @@ PrefabInstance:
     - target: {fileID: 6899603116214237967, guid: 95331c3d810b58f4e8118e67d5abf398, type: 3}
       propertyPath: m_fontColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6899603116214237967, guid: 95331c3d810b58f4e8118e67d5abf398, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 8.3
       objectReference: {fileID: 0}
     - target: {fileID: 6899603116214237967, guid: 95331c3d810b58f4e8118e67d5abf398, type: 3}
       propertyPath: m_isRightToLeft
@@ -457,7 +465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7494176907844933315, guid: 95331c3d810b58f4e8118e67d5abf398, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.52
+      value: -1.4
       objectReference: {fileID: 0}
     - target: {fileID: 7494176907844933315, guid: 95331c3d810b58f4e8118e67d5abf398, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -664,3 +672,27 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!1 &2039929308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6102044458115185810, guid: 95331c3d810b58f4e8118e67d5abf398, type: 3}
+  m_PrefabInstance: {fileID: 1684151281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2039929309
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039929308}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aa1ed1e8011d5694a869136128e48663, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -581,7 +581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1254950779, guid: d8bf7f281264ffb4cbc93025d6f32f16, type: 3}
       propertyPath: textLines.Array.data[1]
-      value: ' <color=#dddd22><i>Welsch</color><i> sent files.'
+      value: <color=#dddd22><i>Welsch</color><i> sent files.
       objectReference: {fileID: 0}
     - target: {fileID: 5274240734870650414, guid: d8bf7f281264ffb4cbc93025d6f32f16, type: 3}
       propertyPath: m_text

@@ -1,6 +1,14 @@
-using System;
 using UnityEngine;
 
+/**
+ * When the collider of the object that has this
+ * component is clicked then the state of the
+ * object in `target` is toggled.
+ * Additionally the object in `after` is displayed
+ * after the collider was clicked at least once.
+ *
+ * Very specific and probably not very reusable.
+ */
 public class DisplayAfterClick : MonoBehaviour
 {
     public GameObject target;

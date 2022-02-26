@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/YAxisValues.unity
     guid: a1d7da73aa9295e47ba2bc3911f4c6c9
+  - enabled: 1
+    path: Assets/Scenes/PointClusterScene.unity
+    guid: e63508f57d984ca4a8dae74bf2698bcf
   m_configObjects: {}

@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ImageDiffScene.unity
     guid: 610f509d98b61434abb3d220c9b576a3
+  - enabled: 1
+    path: Assets/Scenes/YAxisValues.unity
+    guid: a1d7da73aa9295e47ba2bc3911f4c6c9
   m_configObjects: {}

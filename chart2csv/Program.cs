@@ -9,13 +9,61 @@ using static chart2csv.Constants;
 
 namespace chart2csv;
 
-internal static class Program
+//internal static class Program
+public static class Program
 {
+    public static void RunProgram(string inputPath, string outputPath) {
+        var outputImage = Image.Load<Rgba32>($"{inputPath}");
+        var outputOnlyImage = new Image<Rgba32>(outputImage.Width, outputImage.Height);
+        var pointClusterImage = new Image<Rgba32>(outputImage.Width, outputImage.Height);
+        pointClusterImage.Mutate(context => context.DrawImage(outputImage, 1));
+
+        var points = Chart2Csv.GetPoints(outputImage, PointColor, pointClusterImage)
+            .GroupBy(x => x.X)
+            .OrderBy(x => x.Key)
+            .Select(p => p.Count() == 1
+                ? p.Single()
+                : new Point(p.Average(x => x.X), p.Average(x => x.Y)))
+            .ToList();
+
+        var imagePoints = points
+            .Select(x => new PointF((float)x.X, (float)x.Y))
+            .ToArray();
+
+        outputOnlyImage.Mutate(context => context.DrawLines(
+            Color.Red,
+            1f,
+            imagePoints
+        ));
+
+        var origin = FindChartOrigin(outputImage, outputOnlyImage);
+        var (chartWidth, chartHeight) = FindChartDimensions(outputImage, outputOnlyImage, origin);
+
+        //Console.WriteLine($"Chart is {chartWidth}px wide and {chartHeight}px high");
+
+        var xAxis = XAxis.DetectXAxis(points[0], points[^1]);
+        var yAxis = YAxis.DetectYAxis(outputImage, outputOnlyImage, origin, (chartWidth, chartHeight));
+
+        var csvLines = points
+            .Select(x => (xAxis.GetValue(x.X), yAxis.GetValue(x.Y)))
+            .Select(x => $"{x.Item1:dd.MM.yyyy hh:mm};{x.Item2}")
+            .Prepend("DATE;BALANCE USD");
+
+        File.WriteAllLines($"{outputPath}\\output.csv", csvLines);
+
+        outputImage.Mutate(context => context.DrawImage(outputOnlyImage, 1));
+        outputImage.Save($"{outputPath}\\output.png");
+        outputOnlyImage.Mutate(context => context.BackgroundColor(Color.White));
+        outputOnlyImage.Save($"{outputPath}\\output-only.png");
+        pointClusterImage.Mutate(context => context.BackgroundColor(Color.White));
+        pointClusterImage.Save($"{outputPath}\\point-cluster.png");
+    }
     private static void Main()
     {
         var image = Image.Load<Rgba32>(
-            //"charts/00.0-08.0-35.0-35.0-40.0-30.0-01.0-04.0-02.0-NONE.png" //default example
-            "charts/00.0-08.0-46.0-35.0-100.0-40.0-01.0-04.0-02.0-NONE.png" //example with only one y marker
+        
+            "charts/00.0-08.0-35.0-35.0-40.0-30.0-01.0-04.0-02.0-NONE.png" //default example
+            //"charts/00.0-08.0-46.0-35.0-100.0-40.0-01.0-04.0-02.0-NONE.png" //example with only one y marker
         );
         var newImage = new Image<Rgba32>(image.Width, image.Height);
         var pointClusterImage = new Image<Rgba32>(image.Width, image.Height);

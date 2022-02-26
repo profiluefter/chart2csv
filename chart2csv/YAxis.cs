@@ -59,7 +59,7 @@ public class YAxis
             }
 
             var number = (int) Math.Pow(10, count);
-            Console.WriteLine($"Found number {number} at y-position {y} with real position of {realY}");
+            //Console.WriteLine($"Found number {number} at y-position {y} with real position of {realY}");
             numbers[realY] = number;
         }
 

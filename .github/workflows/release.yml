@@ -1,0 +1,30 @@
+name: Release
+on:
+  push:
+    paths-ignore:
+      - 'FiveNightsAtTorstens/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Create release build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Build
+        run: |
+          cd chart2csvConsole
+          dotnet build -c Release --no-restore
+      - name: Publish
+        run: |
+          cd chart2csvConsole
+          dotnet publish -c Release
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: chart2csvConsole
+          path: chart2csvConsole/bin/Release/net6.0/win-x64/publish/chart2csvConsole.exe

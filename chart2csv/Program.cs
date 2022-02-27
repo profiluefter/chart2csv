@@ -12,7 +12,7 @@ namespace chart2csv;
 //internal static class Program
 public static class Program
 {
-    public static void RunProgram(string inputPath, string outputPath) {
+    public static void RunProgram(string inputPath, string outputPath, string? fileName, bool? debug, bool? outputOnly) {
         var outputImage = Image.Load<Rgba32>($"{inputPath}");
         var outputOnlyImage = new Image<Rgba32>(outputImage.Width, outputImage.Height);
         var pointClusterImage = new Image<Rgba32>(outputImage.Width, outputImage.Height);
@@ -39,8 +39,6 @@ public static class Program
         var origin = FindChartOrigin(outputImage, outputOnlyImage);
         var (chartWidth, chartHeight) = FindChartDimensions(outputImage, outputOnlyImage, origin);
 
-        //Console.WriteLine($"Chart is {chartWidth}px wide and {chartHeight}px high");
-
         var xAxis = XAxis.DetectXAxis(points[0], points[^1]);
         var yAxis = YAxis.DetectYAxis(outputImage, outputOnlyImage, origin, (chartWidth, chartHeight));
 
@@ -48,15 +46,30 @@ public static class Program
             .Select(x => (xAxis.GetValue(x.X), yAxis.GetValue(x.Y)))
             .Select(x => $"{x.Item1:dd.MM.yyyy hh:mm};{x.Item2}")
             .Prepend("DATE;BALANCE USD");
-
-        File.WriteAllLines($"{outputPath}\\output.csv", csvLines);
+       if (!Directory.Exists(outputPath)){
+            Directory.CreateDirectory(outputPath);
+        }
+        File.WriteAllLines($"{outputPath}\\{fileName ?? "output"}.csv", csvLines);
 
         outputImage.Mutate(context => context.DrawImage(outputOnlyImage, 1));
-        outputImage.Save($"{outputPath}\\output.png");
-        outputOnlyImage.Mutate(context => context.BackgroundColor(Color.White));
-        outputOnlyImage.Save($"{outputPath}\\output-only.png");
-        pointClusterImage.Mutate(context => context.BackgroundColor(Color.White));
-        pointClusterImage.Save($"{outputPath}\\point-cluster.png");
+        outputImage.Save($"{outputPath}\\{fileName ?? "output"}.png");
+        if (outputOnly is null or false){ }
+        else
+        {
+            outputOnlyImage.Mutate(context => context.BackgroundColor(Color.White));
+            outputOnlyImage.Save(fileName == null
+                ? $"{outputPath}\\output-only.png"
+                : $"{outputPath}\\{fileName}_output-only.png");
+        }
+
+        if (debug is null or false){ }
+        else
+        {
+            pointClusterImage.Mutate(context => context.BackgroundColor(Color.White));
+            pointClusterImage.Save(fileName == null
+                ? $"{outputPath}\\point-cluster.png"
+                : $"{outputPath}\\{fileName}_point-cluster.png");
+        }
     }
     private static void Main()
     {

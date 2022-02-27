@@ -87,7 +87,7 @@ public static class Chart2Csv
             if (x == 0 && y == 0) continue;
             var adjacent = new Pixel(pixel.X + x, pixel.Y + y);
             if (pixels.Contains(adjacent) && !exclude.Contains(adjacent))
-                group.UnionWith(GetGroupOfPixels(pixels, adjacent, exclude));
+                group.Add(adjacent);
         }
 
         return group;

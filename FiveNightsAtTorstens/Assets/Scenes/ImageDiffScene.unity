@@ -430,6 +430,8 @@ GameObject:
   - component: {fileID: 1065990630}
   - component: {fileID: 1065990629}
   - component: {fileID: 1065990628}
+  - component: {fileID: 1065990632}
+  - component: {fileID: 1065990631}
   m_Layer: 0
   m_Name: ZoomTrigger
   m_TagString: Untagged
@@ -476,6 +478,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1065990631}
+        m_TargetAssemblyTypeName: PlayDefaultAnimation, Assembly-CSharp
+        m_MethodName: PlayAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1773783663}
+        m_TargetAssemblyTypeName: PlayDefaultAnimation, Assembly-CSharp
+        m_MethodName: PlayAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1717193416}
+        m_TargetAssemblyTypeName: PlayDefaultAnimation, Assembly-CSharp
+        m_MethodName: PlayAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!61 &1065990629
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -489,7 +527,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.4207275, y: 5.080731}
+  m_Offset: {x: 4.5486794, y: 0.48523545}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -500,7 +538,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 15.333586, y: 1.063796}
+  m_Size: {x: 27.2724, y: 10.254787}
   m_EdgeRadius: 0
 --- !u!4 &1065990630
 Transform:
@@ -516,6 +554,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1065990631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065990627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201375db3f5372448bea684858126ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!111 &1065990632
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065990627}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 1bcac06abf3496f49b59c250ff65799c, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 1bcac06abf3496f49b59c250ff65799c, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &1684151281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -660,6 +726,8 @@ GameObject:
   - component: {fileID: 1717193414}
   - component: {fileID: 1717193413}
   - component: {fileID: 1717193415}
+  - component: {fileID: 1717193417}
+  - component: {fileID: 1717193416}
   m_Layer: 0
   m_Name: LabelTrigger2
   m_TagString: Untagged
@@ -674,7 +742,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1717193412}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -734,6 +802,34 @@ MonoBehaviour:
           m_StringArgument: 2
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1717193416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717193412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201375db3f5372448bea684858126ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!111 &1717193417
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717193412}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 062b0f825c8dc4648a7f3205e6aedd4a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 062b0f825c8dc4648a7f3205e6aedd4a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1773783659
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,6 +841,8 @@ GameObject:
   - component: {fileID: 1773783661}
   - component: {fileID: 1773783660}
   - component: {fileID: 1773783662}
+  - component: {fileID: 1773783664}
+  - component: {fileID: 1773783663}
   m_Layer: 0
   m_Name: LabelTrigger1
   m_TagString: Untagged
@@ -759,7 +857,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773783659}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -819,6 +917,34 @@ MonoBehaviour:
           m_StringArgument: 1
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1773783663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773783659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201375db3f5372448bea684858126ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!111 &1773783664
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773783659}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 062b0f825c8dc4648a7f3205e6aedd4a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 062b0f825c8dc4648a7f3205e6aedd4a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1846903988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,7 +1194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2765017089810468724, guid: d8bf7f281264ffb4cbc93025d6f32f16, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5274240734926202649, guid: d8bf7f281264ffb4cbc93025d6f32f16, type: 3}
       propertyPath: m_Name

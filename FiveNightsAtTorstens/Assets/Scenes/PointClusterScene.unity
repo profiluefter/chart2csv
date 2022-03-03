@@ -348,6 +348,8 @@ GameObject:
   - component: {fileID: 1127160167}
   - component: {fileID: 1127160166}
   - component: {fileID: 1127160165}
+  - component: {fileID: 1127160169}
+  - component: {fileID: 1127160168}
   m_Layer: 0
   m_Name: ZoomTrigger
   m_TagString: Untagged
@@ -382,6 +384,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1127160168}
+        m_TargetAssemblyTypeName: PlayDefaultAnimation, Assembly-CSharp
+        m_MethodName: PlayAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!61 &1127160166
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -395,7 +409,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.6614647, y: 5.0382924}
+  m_Offset: {x: -0.1605854, y: 0.46894646}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -406,7 +420,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 14.852112, y: 0.978919}
+  m_Size: {x: 17.85387, y: 10.117611}
   m_EdgeRadius: 0
 --- !u!4 &1127160167
 Transform:
@@ -422,6 +436,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1127160168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127160164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201375db3f5372448bea684858126ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!111 &1127160169
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127160164}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 1bcac06abf3496f49b59c250ff65799c, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 1bcac06abf3496f49b59c250ff65799c, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &1200339447
 PrefabInstance:
   m_ObjectHideFlags: 0

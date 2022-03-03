@@ -38,7 +38,17 @@ Skript:
 		- Click on date
 	- Task Notif: Get the logarithmic y-values
 		- Subtitle: Now the hardest for last
-		- Click on lines parallel to x-Axis
+		- Click on lines parallel to x-Axis (to click through formulas - ends on the right one)
+	Debug-Scene:
+  		- Objective: Debug outputs
+    		- Gameplay: Durch Debug-Outputs durchklicken
+	Last Fixes:
+  		- Objective 1: Adjust date range
+    			- Initial state: Markers on start and end of x-axis
+    			- Gameplay: Klick on first and last dot to move markers
+  		- Objective 2: Recognise max- and minimums
+    			- Initial state: Dots as before
+    			- Gameplay: Click unrecognized max- and minimums to add points
 	- Task Notif: Commit
 		- Eyes shutting, vision blurry, click on commit before your eyes completely close
 	- Black Screen

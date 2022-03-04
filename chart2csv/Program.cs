@@ -49,17 +49,17 @@ public static class Program
        if (!Directory.Exists(outputPath)){
             Directory.CreateDirectory(outputPath);
         }
-        File.WriteAllLines($"{outputPath}\\{fileName ?? "output"}.csv", csvLines);
+        File.WriteAllLines($"{outputPath}{Path.DirectorySeparatorChar}{fileName ?? "output"}.csv", csvLines);
 
         outputImage.Mutate(context => context.DrawImage(outputOnlyImage, 1));
-        outputImage.Save($"{outputPath}\\{fileName ?? "output"}.png");
+        outputImage.Save($"{outputPath}{Path.DirectorySeparatorChar}{fileName ?? "output"}.png");
         if (outputOnly is null or false){ }
         else
         {
             outputOnlyImage.Mutate(context => context.BackgroundColor(Color.White));
             outputOnlyImage.Save(fileName == null
-                ? $"{outputPath}\\output-only.png"
-                : $"{outputPath}\\{fileName}_output-only.png");
+                ? $"{outputPath}{Path.DirectorySeparatorChar}output-only.png"
+                : $"{outputPath}{Path.DirectorySeparatorChar}{fileName}_output-only.png");
         }
 
         if (debug is null or false){ }
@@ -67,8 +67,8 @@ public static class Program
         {
             pointClusterImage.Mutate(context => context.BackgroundColor(Color.White));
             pointClusterImage.Save(fileName == null
-                ? $"{outputPath}\\point-cluster.png"
-                : $"{outputPath}\\{fileName}_point-cluster.png");
+                ? $"{outputPath}{Path.DirectorySeparatorChar}point-cluster.png"
+                : $"{outputPath}{Path.DirectorySeparatorChar}{fileName}_point-cluster.png");
         }
     }
     private static void Main()

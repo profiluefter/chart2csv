@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chart2csv", "chart2csv\char
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chart2csvConsole", "chart2csvConsole\chart2csvConsole.csproj", "{6B223432-91DC-4989-BF87-9D3E91D21411}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chart2gui", "chart2gui\chart2gui.csproj", "{4BD98E25-F37E-46C1-A1DE-9BD19B0810E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{6B223432-91DC-4989-BF87-9D3E91D21411}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B223432-91DC-4989-BF87-9D3E91D21411}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B223432-91DC-4989-BF87-9D3E91D21411}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BD98E25-F37E-46C1-A1DE-9BD19B0810E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BD98E25-F37E-46C1-A1DE-9BD19B0810E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BD98E25-F37E-46C1-A1DE-9BD19B0810E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BD98E25-F37E-46C1-A1DE-9BD19B0810E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

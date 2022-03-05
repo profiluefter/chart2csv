@@ -1377,6 +1377,10 @@ PrefabInstance:
       propertyPath: MinDistance
       value: 0.7861934
       objectReference: {fileID: 0}
+    - target: {fileID: 663769927536768434, guid: d8bf7f281264ffb4cbc93025d6f32f16, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2765017089810468724, guid: d8bf7f281264ffb4cbc93025d6f32f16, type: 3}
       propertyPath: m_Color.b
       value: 0.32941177

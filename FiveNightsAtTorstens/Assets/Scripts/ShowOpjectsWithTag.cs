@@ -10,6 +10,8 @@ public class ShowOpjectsWithTag : MonoBehaviour
 
     public string Tag;
     private List<GameObject> _gameObjects;
+    public GameObject chat;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,11 @@ public class ShowOpjectsWithTag : MonoBehaviour
                 .ToList()[index]
                 .GetComponent<SpriteRenderer>()
                 .enabled = true;
-        }   
+        }
+        else
+        {
+            chat.GetComponent<ChatController>().StartInitial();
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
 }

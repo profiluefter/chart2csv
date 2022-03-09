@@ -579,6 +579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tag: Point
+  chat: {fileID: 991974510}
 --- !u!114 &82997206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4933,6 +4934,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &991974510 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5274240734926202649, guid: d8bf7f281264ffb4cbc93025d6f32f16, type: 3}
+  m_PrefabInstance: {fileID: 1200339447}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &993717885
 GameObject:
   m_ObjectHideFlags: 0
@@ -6569,7 +6575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1254950779, guid: d8bf7f281264ffb4cbc93025d6f32f16, type: 3}
       propertyPath: playInitialLinesOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1254950779, guid: d8bf7f281264ffb4cbc93025d6f32f16, type: 3}
       propertyPath: textLines.Array.data[0]

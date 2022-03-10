@@ -356,6 +356,7 @@ MonoBehaviour:
   - f(x) = k * x + d
   lastText: "y = yV * 10 ^ ((y - yP) / \u0394y)"
   text: {fileID: 5041313680038991729}
+  nextScene: LastFixesScene
 --- !u!114 &441975356
 MonoBehaviour:
   m_ObjectHideFlags: 0

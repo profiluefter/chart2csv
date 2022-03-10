@@ -32,18 +32,18 @@
 
 
 # chart2csv-CLI
-Die Anwendung wurde mit [Cocona](https://github.com/mayuki/Cocona) erstellt.
+De Onwendung wuad mid [Cocona](https://github.com/mayuki/Cocona) erstöhd.
 ## Zweck
-Konvertieren Sie Diagramme in csv
-## Wie benutzt man die Applikation
+Konvertierens Diagramme in csv
+## Wie benutzt ma d'Applikation
 
 | Option | Beschreibung |
 | ------------- | ------------- |
-| -i --input <Zeichenfolge> (erforderlich) | Die Eingabedatei für das Diagramm |
-| -o --output <Zeichenfolge> (erforderlich) | Das Ausgabeverzeichnis für das Diagramm |
-| -f --filename <Zeichenfolge> (Optional) | Der Name für die Ausgabedatei |
-| -d --debug (Optional) | Ausgabe mit zusätzlichen Debug-Grafiken |
-| --outputonly (Optional) | Ausgabe nur mit Grafik |
+| -i --input <Zeichnfolge> (erforderlich) | d'Eingobedatei fürs Diagramm |
+| -o --output <Zeichnfolge> (erforderlich) | as Ausgobevazeichnis fürs Diagramm |
+| -f --filename <Zeichnfolge> (optional) | Da Nom füa d'Ausgobedatei |
+| -d --debug (optional) | Ausgobe mid zusätzliche Debug-Grafikn |
+| --outputonly (optional) | Ausgobe nur mid Grafik |
 
-## Beispiel
-![Konsolenbeispiel](https://user-images.githubusercontent.com/71697679/157421446-c6fd58c6-e4ba-4a0f-9e4f-0087ac93c412.png)
+## Beispü
+![KonsolnbeispÜ](https://user-images.githubusercontent.com/71697679/157421446-c6fd58c6-e4ba-4a0f-9e4f-0087ac93c412.png)

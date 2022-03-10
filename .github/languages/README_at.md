@@ -32,18 +32,18 @@
 
 
 # chart2csv-CLI
-De Onwendung wuad mid [Cocona](https://github.com/mayuki/Cocona) erstöhd.
+D'Onwendung wuad mid [Cocona](https://github.com/mayuki/Cocona) erstöhd.
 ## Zweck
 Konvertierens Diagramme in csv
 ## Wie benutzt ma d'Applikation
 
 | Option | Beschreibung |
 | ------------- | ------------- |
-| -i --input <Zeichnfolge> (erforderlich) | d'Eingobedatei fürs Diagramm |
-| -o --output <Zeichnfolge> (erforderlich) | as Ausgobevazeichnis fürs Diagramm |
+| -i --input <Zeichnfolge> (erforderlich) | d'Eingobedatei füas Diagramm |
+| -o --output <Zeichnfolge> (erforderlich) | as Ausgobevazeichnis füas Diagramm |
 | -f --filename <Zeichnfolge> (optional) | Da Nom füa d'Ausgobedatei |
 | -d --debug (optional) | Ausgobe mid zusätzliche Debug-Grafikn |
 | --outputonly (optional) | Ausgobe nur mid Grafik |
 
 ## Beispü
-![KonsolnbeispÜ](https://user-images.githubusercontent.com/71697679/157421446-c6fd58c6-e4ba-4a0f-9e4f-0087ac93c412.png)
+![Konsolnbeispü](https://user-images.githubusercontent.com/71697679/157421446-c6fd58c6-e4ba-4a0f-9e4f-0087ac93c412.png)

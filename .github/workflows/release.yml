@@ -20,14 +20,14 @@ jobs:
         run: dotnet restore -r win-x64
       - name: Build
         run: |
-          cd chart2csvConsole
+          cd chart2csv.Console
           dotnet build -c Release -r win-x64 --no-restore --self-contained
       - name: Publish
         run: |
-          cd chart2csvConsole
+          cd chart2csv.Console
           dotnet publish -c Release -r win-x64 --self-contained
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: chart2csvConsole
-          path: chart2csvConsole/bin/Release/net6.0/win-x64/publish/chart2csvConsole.exe
+          name: chart2csv.Console
+          path: chart2csv.Console/bin/Release/net6.0/win-x64/publish/chart2csv.Console.exe

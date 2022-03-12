@@ -1,0 +1,20 @@
+@startuml
+
+[*] --> Initial
+Initial --> ChartWithPoints : GetPoints
+ChartWithPoints --> MergedChart : MergePoints
+Initial --> ChartOrigin : FindOrigin
+ChartWithPoints --> XAxis : DetectXAxis
+ChartOrigin --> YAxis : DetectYAxis
+
+ChartOrigin --> ChartDimensions : FindDimensions
+
+state csvJoin <<join>>
+MergedChart --> csvJoin
+XAxis --> csvJoin
+YAxis --> csvJoin
+csvJoin --> ParsedChart
+
+ParsedChart --> CSV : GenerateCSV
+
+@enduml

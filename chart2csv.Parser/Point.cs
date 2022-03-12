@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace chart2csv;
+namespace chart2csv.Parser;
 
 public readonly struct Point
 {

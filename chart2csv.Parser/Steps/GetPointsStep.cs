@@ -1,21 +1,27 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+using chart2csv.Parser.States;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
-namespace chart2csv;
+namespace chart2csv.Parser.Steps;
 
-public static class Chart2Csv
+public class GetPointsStep : ParserStep<InitialState, ChartWithPointsState>
 {
-    public static HashSet<Point> GetPoints(Image<Rgba32> image, Color hex, Image<Rgba32> pointClusterImage) =>
-        GetGroupsOfPixels(GetPixelsWithAdjacents(image, hex), pointClusterImage)
-            .Select(pixels => new Point(
+    private static readonly Color PointColor = Color.ParseHex("3366CC");
+    
+    public override ChartWithPointsState Process(InitialState input)
+    {
+        var matchingPixels = GetPixelsWithAdjacents(input.InputImage, PointColor);
+        var rawPixelGroups = GetGroupsOfPixels(matchingPixels);
+        var averagedPixelGroups = rawPixelGroups.Select(pixels => new Point(
                 pixels.Average(x => x.X),
                 pixels.Average(x => x.Y)
             ))
             .ToHashSet();
 
-    /**
+        return new ChartWithPointsState(input, matchingPixels, rawPixelGroups, averagedPixelGroups);
+    }
+    
+     /**
      * Searches an image for plus-shaped or square patterns where all pixels have the specified color.
      */
     private static HashSet<Pixel> GetPixelsWithAdjacents(Image<Rgba32> image, Color hex)
@@ -52,7 +58,7 @@ public static class Chart2Csv
         return pixels;
     }
 
-    private static HashSet<HashSet<Pixel>> GetGroupsOfPixels(HashSet<Pixel> pixels, Image<Rgba32> pointClusterImage)
+    private static HashSet<HashSet<Pixel>> GetGroupsOfPixels(HashSet<Pixel> pixels)
     {
         var groupsOfPixels = new HashSet<HashSet<Pixel>>();
         var usedPixels = new HashSet<Pixel>();
@@ -64,10 +70,6 @@ public static class Chart2Csv
             usedPixels.UnionWith(groupOfPixels);
             var hashCode = groupOfPixels.GetHashCode();
             var color = Color.FromRgb((byte) hashCode, (byte) (hashCode << 4), (byte) (hashCode << 8));
-            foreach (var pixel in groupOfPixels)
-            {
-                pointClusterImage[pixel.X, pixel.Y] = color;
-            }
 
             groupsOfPixels.Add(groupOfPixels);
         }

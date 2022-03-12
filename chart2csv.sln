@@ -1,10 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chart2csv", "chart2csv\chart2csv.csproj", "{E8265BE5-E7C0-40F8-BD55-71E523B23456}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chart2csv.Console", "chart2csv.Console\chart2csv.Console.csproj", "{6B223432-91DC-4989-BF87-9D3E91D21411}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chart2csvConsole", "chart2csvConsole\chart2csvConsole.csproj", "{6B223432-91DC-4989-BF87-9D3E91D21411}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chart2csv.Parser", "chart2csv.Parser\chart2csv.Parser.csproj", "{16C3E829-A5B8-45DE-ADF9-CFD30CFF0E27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chart2gui", "chart2gui\chart2gui.csproj", "{4BD98E25-F37E-46C1-A1DE-9BD19B0810E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chart2csv.Executor", "chart2csv.Executor\chart2csv.Executor.csproj", "{FBEAD430-4082-4C19-A8D1-7519833F8983}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chart2csv.Test", "chart2csv.Test\chart2csv.Test.csproj", "{DF790B7D-898C-4294-B077-28D21033727D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,17 +14,21 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E8265BE5-E7C0-40F8-BD55-71E523B23456}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8265BE5-E7C0-40F8-BD55-71E523B23456}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8265BE5-E7C0-40F8-BD55-71E523B23456}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E8265BE5-E7C0-40F8-BD55-71E523B23456}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6B223432-91DC-4989-BF87-9D3E91D21411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6B223432-91DC-4989-BF87-9D3E91D21411}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B223432-91DC-4989-BF87-9D3E91D21411}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B223432-91DC-4989-BF87-9D3E91D21411}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4BD98E25-F37E-46C1-A1DE-9BD19B0810E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4BD98E25-F37E-46C1-A1DE-9BD19B0810E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4BD98E25-F37E-46C1-A1DE-9BD19B0810E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4BD98E25-F37E-46C1-A1DE-9BD19B0810E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16C3E829-A5B8-45DE-ADF9-CFD30CFF0E27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16C3E829-A5B8-45DE-ADF9-CFD30CFF0E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16C3E829-A5B8-45DE-ADF9-CFD30CFF0E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16C3E829-A5B8-45DE-ADF9-CFD30CFF0E27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBEAD430-4082-4C19-A8D1-7519833F8983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBEAD430-4082-4C19-A8D1-7519833F8983}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBEAD430-4082-4C19-A8D1-7519833F8983}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBEAD430-4082-4C19-A8D1-7519833F8983}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF790B7D-898C-4294-B077-28D21033727D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF790B7D-898C-4294-B077-28D21033727D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF790B7D-898C-4294-B077-28D21033727D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF790B7D-898C-4294-B077-28D21033727D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

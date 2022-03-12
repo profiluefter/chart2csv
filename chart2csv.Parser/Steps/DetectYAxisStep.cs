@@ -1,33 +1,27 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using chart2csv.Parser.States;
 using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
-using static chart2csv.Constants;
 
-namespace chart2csv;
+namespace chart2csv.Parser.Steps;
 
-/**
- * Value axis
- */
-public class YAxis
+public class DetectYAxisStep : ParserStep<ChartOriginState, YAxisState>
 {
-    private readonly Dictionary<int,int> _numbers;
+    private static readonly Color NumberZeroColor = Color.ParseHex("7A7A7A");
+    private static readonly Color LineYMarkerColor = Color.ParseHex("B1B1B1");
+    private static readonly Color LineYLabelColor = Color.ParseHex("B2B2B2");
 
-    private YAxis(Dictionary<int,int> numbers)
+    private static readonly double LogarithmPercentage = 1-Math.Log10(9);
+    
+    public override YAxisState Process(ChartOriginState input)
     {
-        _numbers = numbers;
-    }
-
-    public static YAxis DetectYAxis(Image<Rgba32> image, Image<Rgba32> newImage, Pixel origin, (int, int) dimensions)
-    {
+        var origin = input.OriginPoint;
+        var image = input.InputImage;
+        
         var digits = new Dictionary<int, int>();
 
         for (var x = 2; x < origin.X; x++)
         for (var y = 0; y < origin.Y; y++)
         {
-            if ((Color) image[x - 2, y] != NumberZero || (Color) image[x + 2, y] != NumberZero) continue;
-            newImage[x, y] = Color.Black;
+            if ((Color) image[x - 2, y] != NumberZeroColor || (Color) image[x + 2, y] != NumberZeroColor) continue;
 
             if (!digits.ContainsKey(y))
                 digits[y] = 0;
@@ -84,7 +78,7 @@ public class YAxis
                     if ((Color) image[origin.X, i] != LineYMarkerColor) continue;
                 
                     var diff = i - firstNumber.Key;
-                    var actualDiff = (int) (diff / Percentage);
+                    var actualDiff = (int) (diff / LogarithmPercentage);
                     numbers[firstNumber.Key + actualDiff] = firstNumber.Value / 10;
                         
                     break;
@@ -94,18 +88,15 @@ public class YAxis
             }
         }
 
-        return new YAxis(numbers);
+        return new YAxisState(input, numbers, GetValue);
     }
-
-    /**
-     * Gets the value for a given y coordinate (left = 0). 
-     */
-    public double GetValue(double y) {
-        if (_numbers.Count < 2) throw new Exception("not enough markers to calculate y value"); 
+    
+    private static double GetValue(Dictionary<int, int> numbers, double y) {
+        if (numbers.Count < 2) throw new Exception("not enough markers to calculate y value"); 
             
-        var prevPixel = _numbers.OrderByDescending(x => x.Key).Last(x => x.Key > y);
-        var totalPixels = _numbers.OrderByDescending(x => x.Key).First().Key 
-                          - _numbers.OrderByDescending(x => x.Key).Skip(1).First().Key;
-        return Math.Pow(10, (prevPixel.Key - y) / totalPixels) * prevPixel.Value;
+        var (key, value) = numbers.OrderByDescending(x => x.Key).Last(x => x.Key > y);
+        var totalPixels = numbers.OrderByDescending(x => x.Key).First().Key 
+                          - numbers.OrderByDescending(x => x.Key).Skip(1).First().Key;
+        return Math.Pow(10, (key - y) / totalPixels) * value;
     }
 }

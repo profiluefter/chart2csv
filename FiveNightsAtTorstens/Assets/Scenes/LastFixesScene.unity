@@ -406,7 +406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6899603116214237967, guid: 95331c3d810b58f4e8118e67d5abf398, type: 3}
       propertyPath: m_text
-      value: 'Objective: Adjust date range'
+      value: 'Task: Adjust date range'
       objectReference: {fileID: 0}
     - target: {fileID: 7494176907844933315, guid: 95331c3d810b58f4e8118e67d5abf398, type: 3}
       propertyPath: m_Pivot.x

@@ -542,8 +542,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 82997209}
-  - component: {fileID: 82997207}
-  - component: {fileID: 82997204}
   - component: {fileID: 82997206}
   - component: {fileID: 82997205}
   - component: {fileID: 82997208}
@@ -553,19 +551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &82997204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82997203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 201375db3f5372448bea684858126ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_IsActive: 0
 --- !u!114 &82997205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,22 +593,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!111 &82997207
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82997203}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 062b0f825c8dc4648a7f3205e6aedd4a, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 062b0f825c8dc4648a7f3205e6aedd4a, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!61 &82997208
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6137,10 +6107,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1127160168}
-        m_TargetAssemblyTypeName: PlayDefaultAnimation, Assembly-CSharp
-        m_MethodName: PlayAnimation
-        m_Mode: 1
+      - m_Target: {fileID: 1127160164}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6149,17 +6119,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 82997204}
-        m_TargetAssemblyTypeName: PlayDefaultAnimation, Assembly-CSharp
-        m_MethodName: PlayAnimation
-        m_Mode: 1
+      - m_Target: {fileID: 82997203}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!61 &1127160166
 BoxCollider2D:

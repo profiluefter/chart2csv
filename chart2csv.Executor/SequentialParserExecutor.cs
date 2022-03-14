@@ -16,7 +16,7 @@ public static class SequentialParserExecutor
     {
         var chartWithPoints = new GetPointsStep().Process(initialState);
         var chartOrigin = new FindOriginStep().Process(initialState);
-        var mergedChart = new MergePointsStep().Process(chartWithPoints);
+        var mergedChart = new AverageMergePointsStep().Process(chartWithPoints);
         var xAxis = new DetectXAxisStep().Process(chartWithPoints);
         var yAxis = new DetectYAxisStep().Process(chartOrigin);
         var parsedChart = new ParsedChartState(mergedChart, xAxis, yAxis);

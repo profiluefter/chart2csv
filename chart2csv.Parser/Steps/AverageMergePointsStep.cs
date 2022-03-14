@@ -2,7 +2,7 @@ using chart2csv.Parser.States;
 
 namespace chart2csv.Parser.Steps;
 
-public class MergePointsStep : ParserStep<ChartWithPointsState, MergedChartState>
+public class AverageMergePointsStep : ParserStep<ChartWithPointsState, MergedChartState>
 {
     public override MergedChartState Process(ChartWithPointsState input)
     {

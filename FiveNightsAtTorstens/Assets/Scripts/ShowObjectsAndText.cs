@@ -16,9 +16,6 @@ public class ShowObjectsAndText : MonoBehaviour {
     public List<string> texts;
     public string lastText;
     public TextMeshPro text;
-
-    private bool _finished;
-    public string nextScene;
     
     // Start is called before the first frame update
     void Start() {
@@ -29,10 +26,7 @@ public class ShowObjectsAndText : MonoBehaviour {
     }
 
     public void NextObjectsAndText() {
-        if (_finished) {
-            SceneManager.LoadScene(nextScene);
-            return;
-        }
+        if (_objects.Count == 0) return;
         
         var objectsPerText = _objectsPerText;
         
@@ -61,7 +55,8 @@ public class ShowObjectsAndText : MonoBehaviour {
             foreach (var o in _initialObjects) {
                 o.GetComponent<SpriteRenderer>().color = objectColorOnFinish;
             }
-            _finished = true;
+
+            GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 }

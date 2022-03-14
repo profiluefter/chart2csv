@@ -421,7 +421,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6899603116214237967, guid: 95331c3d810b58f4e8118e67d5abf398, type: 3}
       propertyPath: m_text
-      value: 'Objective: Recognise dates'
+      value: 'Task: Recognise dates'
       objectReference: {fileID: 0}
     - target: {fileID: 7494176907844933315, guid: 95331c3d810b58f4e8118e67d5abf398, type: 3}
       propertyPath: m_Pivot.x
@@ -1010,7 +1010,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6899603116214237967, guid: 95331c3d810b58f4e8118e67d5abf398, type: 3}
       propertyPath: m_text
-      value: 'Objective: Recognise the axes'
+      value: 'Task: Recognise the axes'
       objectReference: {fileID: 0}
     - target: {fileID: 7494176907844933315, guid: 95331c3d810b58f4e8118e67d5abf398, type: 3}
       propertyPath: m_Pivot.x

@@ -14,7 +14,7 @@ public class DetectYAxisStep : ParserStep<ChartOriginState, YAxisState>
     public override YAxisState Process(ChartOriginState input)
     {
         var origin = input.OriginPoint;
-        var image = input.InputImage;
+        var image = input.InitialState.InputImage;
         
         var digits = new Dictionary<int, int>();
 

@@ -8,11 +8,6 @@
 
     <ItemGroup>
       <PackageReference Include="SixLabors.ImageSharp" Version="2.1.0" />
-      <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="1.0.0-beta14" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\chart2csv.Utils\chart2csv.Utils.csproj" />
     </ItemGroup>
 
 </Project>

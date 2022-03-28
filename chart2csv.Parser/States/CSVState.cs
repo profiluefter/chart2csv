@@ -2,12 +2,12 @@ namespace chart2csv.Parser.States;
 
 public class CSVState : ParserState
 {
-    public CSVState(ParsedChartState previousState, List<string> csvLines)
+    public CSVState(ParsedChartState parsedChartState, List<string> csvLines)
     {
-        ParsedChart = previousState;
+        ParsedChartState = parsedChartState;
         CSVLines = csvLines;
     }
 
-    public ParsedChartState ParsedChart { get; }
+    public ParsedChartState ParsedChartState { get; }
     public List<string> CSVLines { get; }
 }

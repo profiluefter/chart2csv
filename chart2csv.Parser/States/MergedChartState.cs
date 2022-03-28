@@ -1,11 +1,13 @@
 namespace chart2csv.Parser.States;
 
-public class MergedChartState : ChartWithPointsState
+public class MergedChartState : ParserState
 {
-    public MergedChartState(ChartWithPointsState previousState, List<Point> points) : base(previousState)
+    public MergedChartState(ChartWithPointsState chartWithPointsState, List<Point> points)
     {
+        ChartWithPointsState = chartWithPointsState;
         Points = points;
     }
 
+    public ChartWithPointsState ChartWithPointsState { get; }
     public List<Point> Points { get; }
 }

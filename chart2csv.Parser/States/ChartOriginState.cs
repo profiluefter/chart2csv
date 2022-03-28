@@ -2,16 +2,14 @@ using System.Xml.Serialization;
 
 namespace chart2csv.Parser.States;
 
-public class ChartOriginState : InitialState
+public class ChartOriginState : ParserState
 {
-    public ChartOriginState(InitialState previousState, Pixel originPoint) : base(previousState)
+    public ChartOriginState(InitialState initialState, Pixel originPoint)
     {
+        InitialState = initialState;
         OriginPoint = originPoint;
     }
 
-    protected ChartOriginState(ChartOriginState state) : this(state, state.OriginPoint)
-    {
-    }
-
+    public InitialState InitialState { get; }
     public Pixel OriginPoint { get; }
 }

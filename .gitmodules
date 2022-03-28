@@ -1,0 +1,15 @@
+[submodule "chart2gui/lib/hello_imgui"]
+	path = chart2gui/lib/hello_imgui
+	url = https://github.com/pthom/hello_imgui.git
+[submodule "chart2gui/lib/tiny-process-library"]
+	path = chart2gui/lib/tiny-process-library
+	url = https://gitlab.com/eidheim/tiny-process-library.git
+[submodule "chart2gui/lib/imgui-file-dialog"]
+	path = chart2gui/lib/imgui-file-dialog
+	url = https://github.com/aiekick/ImGuiFileDialog.git
+[submodule "chart2gui/lib/libbase64"]
+	path = chart2gui/lib/libbase64
+	url = https://github.com/gofer/libbase64.git
+[submodule "chart2gui/lib/imgui-node-editor"]
+	path = chart2gui/lib/imgui-node-editor
+	url = https://github.com/thedmd/imgui-node-editor.git

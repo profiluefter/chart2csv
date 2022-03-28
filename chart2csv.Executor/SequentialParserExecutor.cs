@@ -1,5 +1,4 @@
-﻿using chart2csv.Parser;
-using chart2csv.Parser.States;
+﻿using chart2csv.Parser.States;
 using chart2csv.Parser.Steps;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;

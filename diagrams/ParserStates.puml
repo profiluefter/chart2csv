@@ -2,7 +2,8 @@
 
 [*] --> Initial
 Initial --> ChartWithPoints : GetPoints
-ChartWithPoints --> MergedChart : MergePoints
+ChartWithPoints --> MergedChart : LookAroundMergePoints
+ChartWithPoints --> MergedChart : AverageMergePoints
 Initial --> ChartOrigin : FindOrigin
 ChartWithPoints --> XAxis : DetectXAxis
 ChartOrigin --> YAxis : DetectYAxis
@@ -16,5 +17,7 @@ YAxis --> csvJoin
 csvJoin --> ParsedChart
 
 ParsedChart --> CSV : GenerateCSV
+
+MergedChart --> LineOverlayChart : GenerateLineOverlay
 
 @enduml

@@ -1,17 +1,15 @@
 namespace chart2csv.Parser.States;
 
-public class ChartDimensionsState : ChartOriginState
+public class ChartDimensionsState : ParserState
 {
-    public ChartDimensionsState(ChartOriginState previousState, int chartWidth, int chartHeight) : base(previousState)
+    public ChartDimensionsState(ChartOriginState chartOriginState, int chartWidth, int chartHeight)
     {
+        ChartOriginState = chartOriginState;
         ChartWidth = chartWidth;
         ChartHeight = chartHeight;
     }
 
-    protected ChartDimensionsState(ChartDimensionsState state) : this(state, state.ChartWidth, state.ChartHeight)
-    {
-    }
-
+    public ChartOriginState ChartOriginState { get; }
     public int ChartWidth { get; }
     public int ChartHeight { get; }
 }

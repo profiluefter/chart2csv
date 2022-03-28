@@ -14,7 +14,7 @@ public class FindDimensionsStep : ParserStep<ChartOriginState, ChartDimensionsSt
     
     public override ChartDimensionsState Process(ChartOriginState input)
     {
-        var image = input.InputImage;
+        var image = input.InitialState.InputImage;
         var origin = input.OriginPoint;
         
         var chartWidth = 1;

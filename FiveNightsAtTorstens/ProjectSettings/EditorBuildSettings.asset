@@ -33,6 +33,6 @@ EditorBuildSettings:
     path: Assets/Scenes/DebugScene.unity
     guid: b83a541b5ed35d048a436fa92c813982
   - enabled: 1
-    path: Assets/Scenes/LastFixesScene.unity
-    guid: 011794178ded7244cafd92468e43f7e0
+    path: Assets/Scenes/DateAdjustmentScene.unity
+    guid: a895e9ab33d5d8c448f3404c1f6174df
   m_configObjects: {}

@@ -8,7 +8,7 @@ add_subdirectory(lib/hello_imgui)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${HELLOIMGUI_BASEPATH}/hello_imgui_cmake)
 include(hello_imgui_add_app)
 
-hello_imgui_add_app(chart2gui src/main.cpp lib/imgui-file-dialog/ImGuiFileDialog.cpp)
+hello_imgui_add_app(chart2gui src/main.cpp lib/imgui-file-dialog/ImGuiFileDialog.cpp src/IPCTester.cpp src/ProcessControlWindow.cpp)
 
 add_library(json INTERFACE)
 target_include_directories(json INTERFACE lib/json)
@@ -20,11 +20,6 @@ target_link_libraries(chart2gui PRIVATE imgui-file-dialog)
 
 add_library(imgui-headers INTERFACE)
 target_include_directories(imgui-headers INTERFACE lib/hello_imgui/external/imgui)
-
-add_library(imgui-node-editor OBJECT lib/imgui-node-editor/crude_json.cpp lib/imgui-node-editor/imgui_canvas.cpp lib/imgui-node-editor/imgui_node_editor.cpp lib/imgui-node-editor/imgui_node_editor_api.cpp)
-target_include_directories(imgui-node-editor PUBLIC lib/imgui-node-editor/)
-target_link_libraries(imgui-node-editor PRIVATE imgui-headers)
-target_link_libraries(chart2gui PRIVATE imgui-node-editor)
 
 add_library(libbase64 OBJECT lib/libbase64/src/base64_decode.cpp lib/libbase64/src/base64_encode.cpp)
 target_include_directories(libbase64 PUBLIC lib/libbase64/include)

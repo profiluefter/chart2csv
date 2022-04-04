@@ -10,6 +10,3 @@
 [submodule "chart2gui/lib/libbase64"]
 	path = chart2gui/lib/libbase64
 	url = https://github.com/gofer/libbase64.git
-[submodule "chart2gui/lib/imgui-node-editor"]
-	path = chart2gui/lib/imgui-node-editor
-	url = https://github.com/thedmd/imgui-node-editor.git

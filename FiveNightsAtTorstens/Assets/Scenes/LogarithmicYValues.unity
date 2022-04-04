@@ -356,6 +356,7 @@ MonoBehaviour:
   - f(x) = k * x + d
   lastText: "y = yV * 10 ^ ((y - yP) / \u0394y)"
   text: {fileID: 5041313680038991729}
+  gameObject: {fileID: 526227351}
 --- !u!114 &441975356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,6 +481,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &526227351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1472103787411067540, guid: 354eda8ef9ed25548a85cd8a67acdc34, type: 3}
+  m_PrefabInstance: {fileID: 665885380}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &604802902
 GameObject:
   m_ObjectHideFlags: 0

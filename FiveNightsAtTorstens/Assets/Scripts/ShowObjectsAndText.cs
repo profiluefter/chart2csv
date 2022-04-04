@@ -16,6 +16,7 @@ public class ShowObjectsAndText : MonoBehaviour {
     public List<string> texts;
     public string lastText;
     public TextMeshPro text;
+    public GameObject gameObject;
     
     // Start is called before the first frame update
     void Start() {
@@ -55,7 +56,7 @@ public class ShowObjectsAndText : MonoBehaviour {
             foreach (var o in _initialObjects) {
                 o.GetComponent<SpriteRenderer>().color = objectColorOnFinish;
             }
-
+            gameObject.SetActive(true);
             GetComponent<BoxCollider2D>().enabled = false;
         }
     }

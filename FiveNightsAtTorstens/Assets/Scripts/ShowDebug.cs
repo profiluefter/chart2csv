@@ -15,7 +15,10 @@ public class ShowDebug : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        Objects[0].SetActive(true);
-        Objects.Remove(Objects[0]);
+        if(Objects.Count > 0)
+        {
+            Objects[0].SetActive(true);
+            Objects.Remove(Objects[0]); 
+        }
     }
 }

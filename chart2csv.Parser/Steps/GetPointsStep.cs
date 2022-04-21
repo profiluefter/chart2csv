@@ -77,7 +77,7 @@ public class GetPointsStep : ParserStep<InitialState, ChartWithPointsState>
         return groupsOfPixels;
     }
 
-    private static HashSet<Pixel> GetGroupOfPixels(HashSet<Pixel> pixels, Pixel pixel, HashSet<Pixel> exclude = null)
+    private static HashSet<Pixel> GetGroupOfPixels(HashSet<Pixel> pixels, Pixel pixel, HashSet<Pixel>? exclude = null)
     {
         var group = new HashSet<Pixel> {pixel};
         exclude ??= new HashSet<Pixel>();

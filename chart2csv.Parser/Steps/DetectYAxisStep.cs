@@ -1,4 +1,5 @@
 using chart2csv.Parser.States;
+using Serilog;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
@@ -84,9 +85,14 @@ public class DetectYAxisStep : ParserStep<ChartOriginState, YAxisState>
             }
         }
 
-        Console.WriteLine($"Found {linuxDigits.Count} linux digits and {windowsDigits.Count} windows digits");
-        var isWindows = windowsDigits.Count > linuxDigits.Count;
-        Console.WriteLine($"Assuming this is a {(isWindows ? "windows" : "linux")} chart");
+        Log.Debug("Found {LinuxDigits} linux digits and {WindowsDigits} windows digits", linuxDigits.Count, windowsDigits.Count);
+        
+        var probability = windowsDigits.Count / (windowsDigits.Count + linuxDigits.Count);
+        var isWindows = probability > 0.5;
+        if(!isWindows)
+            probability = 1 - probability;
+        
+        Log.Information("Analysis is {Probability:##0.#}% sure that this is a {Platform} chart", probability * 100, isWindows ? "Windows" : "Linux");
 
         return isWindows ? windowsDigits : linuxDigits;
     }

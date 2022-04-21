@@ -2,6 +2,7 @@
 using chart2csv.Parser;
 using chart2csv.Parser.States;
 using chart2csv.Parser.Steps;
+using Serilog;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
@@ -57,9 +58,9 @@ public class SequentialParserExecutor
             _ => throw new Exception($"Invalid state {type.FullName}"),
         }) ?? throw new Exception("Calculated state is null"));
         stopwatch.Stop();
-        
-        Console.WriteLine($"{type.Name,-30}: {stopwatch.ElapsedMilliseconds.ToString(),4} ms");
-        
+
+        Log.Debug("Calculated state {Name,-25} in {Elapsed,4} ms", type.Name, stopwatch.ElapsedMilliseconds);
+
         _states[type] = calculatedState;
         
         return calculatedState;

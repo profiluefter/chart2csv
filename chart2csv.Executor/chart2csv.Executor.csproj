@@ -10,4 +10,8 @@
       <ProjectReference Include="..\chart2csv.Parser\chart2csv.Parser.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Serilog" Version="2.10.0" />
+    </ItemGroup>
+
 </Project>

@@ -11,6 +11,12 @@ jobs:
   build:
     name: Build Unity Project
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          - StandaloneWindows64
+          - StandaloneLinux64
     steps:
       # Checkout
       - name: Checkout repository
@@ -32,12 +38,12 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          targetPlatform: StandaloneWindows64
+          targetPlatform: ${{ matrix.targetPlatform }}
           projectPath: FiveNightsAtTorstens
           buildsPath: FiveNightsAtTorstens/build
       
       # Upload
       - uses: actions/upload-artifact@v2
         with:
-          name: Windows Build
-          path: FiveNightsAtTorstens/build/StandaloneWindows64/
+          name: Build-${{ matrix.targetPlatform }}
+          path: FiveNightsAtTorstens/build/${{ matrix.targetPlatform }}/

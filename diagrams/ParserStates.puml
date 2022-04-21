@@ -1,7 +1,10 @@
 @startuml
 
+!theme crt-green
+
 [*] --> Initial
 Initial --> ChartWithPoints : GetPoints
+ChartWithPoints --> PointClusterImage : GenerateClusterImage
 ChartWithPoints --> MergedChart : LookAroundMergePoints
 ChartWithPoints --> MergedChart : AverageMergePoints
 Initial --> ChartOrigin : FindOrigin

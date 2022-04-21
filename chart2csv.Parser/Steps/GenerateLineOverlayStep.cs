@@ -23,6 +23,6 @@ public class GenerateLineOverlayStep : ParserStep<MergedChartState, LineOverlayC
         var image = inputImage.Clone();
         image.Mutate(x => x.DrawImage(overlay, 1));
 
-        return new LineOverlayChartState(input, image, overlay);
+        return new LineOverlayChartState(input, overlay, image);
     }
 }

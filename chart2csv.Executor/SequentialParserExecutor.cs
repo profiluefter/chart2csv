@@ -52,6 +52,7 @@ public class SequentialParserExecutor
             nameof(CSVState) => new GenerateCSVStep().Process(ComputeState<ParsedChartState>()),
             nameof(ChartDimensionsState) => new FindDimensionsStep().Process(ComputeState<ChartOriginState>()),
             nameof(LineOverlayChartState) => new GenerateLineOverlayStep().Process(ComputeState<MergedChartState>()),
+            nameof(PointClusterImageState) => new GenerateClusterImage().Process(ComputeState<ChartWithPointsState>()),
 
             _ => throw new Exception($"Invalid state {type.FullName}"),
         }) ?? throw new Exception("Calculated state is null"));

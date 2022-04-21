@@ -5,11 +5,11 @@ namespace chart2csv.Parser.States;
 
 public class LineOverlayChartState : ParserState
 {
-    public LineOverlayChartState(MergedChartState mergedChartState, Image<Rgba32> lineOverlayChart,
-        Image<Rgba32> overlay)
+    public LineOverlayChartState(MergedChartState mergedChartState,
+        Image<Rgba32> overlay, Image<Rgba32> overlayChart)
     {
         MergedChartState = mergedChartState;
-        LineOverlayChart = lineOverlayChart;
+        LineOverlayChart = overlayChart;
         LineOverlay = overlay;
     }
 

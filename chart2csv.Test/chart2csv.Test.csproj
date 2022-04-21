@@ -44,6 +44,9 @@
       <None Update="charts\00.0-75.0-44.0-20000.0-52.0-41.0-00.0-20.0-50.0-NONE.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
+      <None Update="charts\windows-chart.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
     <ItemGroup>

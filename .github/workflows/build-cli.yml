@@ -1,4 +1,5 @@
-name: Release
+name: Build CLI Interface
+
 on:
   push:
     paths-ignore:

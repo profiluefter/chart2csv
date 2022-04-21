@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "FiveNightsAtTorstens/**"
+      - ".github/workflows/unity.yml"
   workflow_dispatch: 
 
 jobs:
@@ -18,8 +19,8 @@ jobs:
       # Cache
       - uses: actions/cache@v2
         with:
-          path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          path: FiveNightsAtTorstens/Library
+          key: Library-FiveNightsAtTorstens
           restore-keys: |
             Library-
       
@@ -33,9 +34,10 @@ jobs:
         with:
           targetPlatform: StandaloneWindows64
           projectPath: FiveNightsAtTorstens
+          buildsPath: FiveNightsAtTorstens/build
       
       # Upload
       - uses: actions/upload-artifact@v2
         with:
           name: Windows Build
-          path: FiveNightsAtTorstens/Build
+          path: FiveNightsAtTorstens/build/StandaloneWindows64/

@@ -1,6 +1,5 @@
 using chart2csv.Parser.States;
 using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Advanced;
 using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
@@ -24,6 +23,6 @@ public class GenerateLineOverlayStep : ParserStep<MergedChartState, LineOverlayC
         var image = inputImage.Clone();
         image.Mutate(x => x.DrawImage(overlay, 1));
 
-        return new LineOverlayChartState(input, image);
+        return new LineOverlayChartState(input, image, overlay);
     }
 }

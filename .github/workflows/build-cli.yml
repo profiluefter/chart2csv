@@ -29,6 +29,7 @@ jobs:
           dotnet publish -c Release -r win-x64 --self-contained
       - name: Upload artifact
         uses: actions/upload-artifact@v2
+        continue-on-error: true
         with:
           name: chart2csv.Console
           path: chart2csv.Console/bin/Release/net6.0/win-x64/publish/chart2csv.Console.exe

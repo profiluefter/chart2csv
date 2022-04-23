@@ -44,6 +44,7 @@ jobs:
       
       # Upload
       - uses: actions/upload-artifact@v2
+        continue-on-error: true
         with:
           name: Build-${{ matrix.targetPlatform }}
           path: FiveNightsAtTorstens/build/${{ matrix.targetPlatform }}/

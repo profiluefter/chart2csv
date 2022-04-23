@@ -10,7 +10,7 @@ namespace chart2csv.Executor;
 
 public class SequentialParserExecutor
 {
-    public bool UseLookAroundMerging { get; init; } = false;
+    public PointMergeStrategy PointMergeStrategy { get; init; } = PointMergeStrategy.Average;
     private readonly Dictionary<Type, ParserState> _states = new();
 
     // ReSharper disable once SuggestBaseTypeForParameterInConstructor
@@ -41,9 +41,12 @@ public class SequentialParserExecutor
 
             nameof(ChartWithPointsState) => new GetPointsStep().Process(ComputeState<InitialState>()),
             nameof(ChartOriginState) => new FindOriginStep().Process(ComputeState<InitialState>()),
-            nameof(MergedChartState) => UseLookAroundMerging
-                ? new LookAroundMergePointsStep().Process(ComputeState<ChartWithPointsState>())
-                : new AverageMergePointsStep().Process(ComputeState<ChartWithPointsState>()),
+            nameof(MergedChartState) => PointMergeStrategy switch
+            {
+                PointMergeStrategy.LookAround => new LookAroundMergePointsStep().Process(ComputeState<ChartWithPointsState>()),
+                PointMergeStrategy.Average => new AverageMergePointsStep().Process(ComputeState<ChartWithPointsState>()),
+                _ => throw new ArgumentOutOfRangeException()
+            },
             nameof(XAxisState) => new DetectXAxisStep().Process(ComputeState<ChartWithPointsState>()),
             nameof(YAxisState) => new DetectYAxisStep().Process(ComputeState<ChartOriginState>()),
             nameof(ParsedChartState) => new ParsedChartState(

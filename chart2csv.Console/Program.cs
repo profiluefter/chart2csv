@@ -20,9 +20,11 @@ void Program(
     [Argument(Description = "The path or filename of the image of the graph that should be converted")]
     string input,
     [Argument(Description = "Folder or filename to output the csv file to")]
-    string output = ".",
-    [Option("override", Description = "Overwrite the output file if it already exists")]
-    bool @override = false,
+    string? output,
+    [Option("merge-strategy", Description = "The method to use when merging points with the same X position")]
+    PointMergeStrategy pointMergeStrategy = PointMergeStrategy.Average,
+    [Option("overwrite", Description = "Overwrite the output file if it already exists")]
+    bool overwrite = false,
     [Option("log-level", new[] { 'l' }, Description = "The log level of the console logger")]
     LogEventLevel logLevel = LogEventLevel.Information,
     [Option("verbose", new[] { 'v' }, Description = "Outputs more information, alias for --log-level=Verbose")]
@@ -51,6 +53,8 @@ void Program(
 
     Log.Debug("Input file: {Input}", input);
 
+    output ??= Path.GetDirectoryName(input)!;
+
     if (Path.EndsInDirectorySeparator(output) && !Directory.Exists(output))
     {
         Log.Fatal("Output directory not found: {Output}", Path.GetFullPath(output));
@@ -69,14 +73,14 @@ void Program(
 
     if (File.Exists(output))
     {
-        if (@override)
+        if (overwrite)
         {
             Log.Warning("Output file already exists, but will be overwritten: {Output}", output);
         }
         else
         {
             Log.Fatal("Output file already exists: {Output}", output);
-            Log.Information("Use --override to overwrite the file");
+            Log.Information("Use --overwrite to overwrite the file");
             Environment.Exit(1);
         }
     }

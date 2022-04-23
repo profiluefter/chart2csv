@@ -68,9 +68,6 @@ public class GetPointsStep : ParserStep<InitialState, ChartWithPointsState>
                      .Select(x => GetGroupOfPixels(pixels, x)))
         {
             usedPixels.UnionWith(groupOfPixels);
-            var hashCode = groupOfPixels.GetHashCode();
-            var color = Color.FromRgb((byte) hashCode, (byte) (hashCode << 4), (byte) (hashCode << 8));
-
             groupsOfPixels.Add(groupOfPixels);
         }
 

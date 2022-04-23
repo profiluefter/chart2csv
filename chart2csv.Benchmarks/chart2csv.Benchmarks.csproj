@@ -8,6 +8,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\chart2csv.Executor\chart2csv.Executor.csproj" />
       <ProjectReference Include="..\chart2csv.TestData\chart2csv.TestData.csproj" />
     </ItemGroup>

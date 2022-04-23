@@ -39,9 +39,9 @@ public class LookAroundMergePointsStep : ParserStep<ChartWithPointsState, Merged
 
             var orientation = firstY > secondY ? "declining" : "ascending";
 
-            Console.WriteLine($"Merging at X={group.Key:0000}: previousY={previousY:000} nextY={nextY:000} " +
-                              $"maxY={maxY:000} minY={minY:000} firstY={firstY:000} secondY={secondY:000} " +
-                              $"orientation={orientation}");
+            // Console.WriteLine($"Merging at X={group.Key:0000}: previousY={previousY:000} nextY={nextY:000} " +
+            //                   $"maxY={maxY:000} minY={minY:000} firstY={firstY:000} secondY={secondY:000} " +
+            //                   $"orientation={orientation}");
         }
 
         processed.Add(new Point(grouped.Last().Average(x => x.X), grouped.Last().Average(x => x.Y)));

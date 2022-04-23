@@ -8,8 +8,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chart2csv.Executor", "chart
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chart2csv.Test", "chart2csv.Test\chart2csv.Test.csproj", "{DF790B7D-898C-4294-B077-28D21033727D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chart2csv.IPC", "chart2csv.IPC\chart2csv.IPC.csproj", "{9C8AE8AF-1DE4-4E83-82F6-18C110A8567E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chart2csv.Utils", "chart2csv.Utils\chart2csv.Utils.csproj", "{E7895193-4CB2-418F-B84F-1C7ECD0AB28E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chart2csv.Benchmarks", "chart2csv.Benchmarks\chart2csv.Benchmarks.csproj", "{71E2C17C-8676-4AE7-9FB0-C496FBAA6E3F}"
@@ -38,10 +36,6 @@ Global
 		{DF790B7D-898C-4294-B077-28D21033727D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF790B7D-898C-4294-B077-28D21033727D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF790B7D-898C-4294-B077-28D21033727D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9C8AE8AF-1DE4-4E83-82F6-18C110A8567E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C8AE8AF-1DE4-4E83-82F6-18C110A8567E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C8AE8AF-1DE4-4E83-82F6-18C110A8567E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C8AE8AF-1DE4-4E83-82F6-18C110A8567E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E7895193-4CB2-418F-B84F-1C7ECD0AB28E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E7895193-4CB2-418F-B84F-1C7ECD0AB28E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7895193-4CB2-418F-B84F-1C7ECD0AB28E}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -55,6 +55,8 @@ public class DetectYAxisStep : ParserStep<ChartOriginState, YAxisState>
                 break;
             }
         }
+        
+        Log.Debug("Found y-axis numbers: {@Numbers}", numbers);
 
         return new YAxisState(input, numbers, GetValue);
     }

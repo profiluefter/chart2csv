@@ -2,6 +2,7 @@ using chart2csv.Parser.States;
 
 namespace chart2csv.Parser.Steps;
 
+//TODO: Debug and add logging
 public class LookAroundMergePointsStep : ParserStep<ChartWithPointsState, MergedChartState>
 {
     public override MergedChartState Process(ChartWithPointsState input)

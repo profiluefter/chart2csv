@@ -1,4 +1,5 @@
 using chart2csv.Parser.States;
+using Serilog;
 using SixLabors.ImageSharp;
 
 namespace chart2csv.Parser.Steps;
@@ -38,6 +39,8 @@ public class FindDimensionsStep : ParserStep<ChartOriginState, ChartDimensionsSt
         chartWidth--;
         chartHeight--;
 
+        Log.Debug("Found chart dimensions: {Width}x{Height}", chartWidth, chartHeight);
+        
         return new ChartDimensionsState(input, chartWidth, chartHeight);
     }
 }

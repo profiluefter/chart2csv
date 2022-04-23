@@ -37,7 +37,7 @@ void Program(
 
     Log.Logger = new LoggerConfiguration()
         .MinimumLevel.Is(verbose ? LogEventLevel.Verbose : logLevel)
-        .WriteTo.Console()
+        .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss.fff} {Level:u3}] {Message:lj}{NewLine}{Exception}")
         .Filter.ByExcluding(_ => silent)
         .CreateLogger();
 
@@ -99,8 +99,8 @@ void Program(
     Log.Debug("Writing CSV file");
     File.WriteAllLines(output, csvState.CSVLines);
 
-    Log.Information("Done. Generated {Count} lines in {Millis} ms", csvState.CSVLines.Count,
-        stopwatch.ElapsedMilliseconds);
+    Log.Information("Done. Generated {Count} CSV lines into {FileName} in {Millis} ms",
+        csvState.CSVLines.Count, output, stopwatch.ElapsedMilliseconds);
 }
 
 CoconaApp.Run(Program);

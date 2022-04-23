@@ -1,4 +1,5 @@
 using chart2csv.Parser.States;
+using Serilog;
 using SixLabors.ImageSharp;
 
 namespace chart2csv.Parser.Steps;
@@ -31,7 +32,8 @@ public class FindOriginStep : ParserStep<InitialState, ChartOriginState>
 
         if (origin == null)
             throw new Exception("No origin point found");
-
-        return new ChartOriginState(input, (Pixel)origin);
+        
+        Log.Debug("Found chart origin point at {@Point}", origin.Value);
+        return new ChartOriginState(input, origin.Value);
     }
 }

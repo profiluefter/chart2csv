@@ -1,4 +1,5 @@
 using chart2csv.Parser.States;
+using Serilog;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 
@@ -10,13 +11,25 @@ public class GetPointsStep : ParserStep<InitialState, ChartWithPointsState>
     
     public override ChartWithPointsState Process(InitialState input)
     {
-        var matchingPixels = GetPixelsWithAdjacents(input.InputImage, PointColor);
+        var image = input.InputImage;
+        
+        if (image.Width != 1280 || image.Height != 720)
+            // ReSharper disable once LogMessageIsSentenceProblem
+            Log.Warning("Input image is not 1280x720 but instead {Width}x{Height}. This is uncharted territory.",
+                image.Width, image.Height);
+        
+        var matchingPixels = GetPixelsWithAdjacents(image, PointColor);
         var rawPixelGroups = GetGroupsOfPixels(matchingPixels);
         var averagedPixelGroups = rawPixelGroups.Select(pixels => new Point(
                 pixels.Average(x => x.X),
                 pixels.Average(x => x.Y)
             ))
             .ToHashSet();
+        
+        if(averagedPixelGroups.Count == 0)
+            throw new ParserException("No points found in image.");
+        
+        Log.Debug("Generated {GroupCount} points/pixel groups from {PixelCount} matching pixels", averagedPixelGroups.Count, matchingPixels.Count);
 
         return new ChartWithPointsState(input, matchingPixels, rawPixelGroups, averagedPixelGroups);
     }

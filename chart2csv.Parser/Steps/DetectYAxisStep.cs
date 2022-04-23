@@ -122,7 +122,7 @@ public class DetectYAxisStep : ParserStep<ChartOriginState, YAxisState>
             }
             else
             {
-                throw new Exception($"Couldn't find corresponding graph line for digits at height {y}");
+                throw new ParserException($"Couldn't find corresponding graph line for digits at height {y}");
             }
 
             var number = (int)Math.Pow(10, count);
@@ -133,7 +133,7 @@ public class DetectYAxisStep : ParserStep<ChartOriginState, YAxisState>
     }
 
     private static double GetValue(Dictionary<int, int> numbers, double y) {
-        if (numbers.Count < 2) throw new Exception("not enough markers to calculate y value"); 
+        if (numbers.Count < 2) throw new ParserException("Not enough markers to calculate y value"); 
             
         var (key, value) = numbers.OrderByDescending(x => x.Key).Last(x => x.Key > y);
         var totalPixels = numbers.OrderByDescending(x => x.Key).First().Key 

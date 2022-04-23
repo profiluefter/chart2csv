@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using chart2csv.Executor;
+using chart2csv.Parser;
 using chart2csv.Parser.States;
 using Cocona;
 using Serilog;
@@ -91,8 +92,17 @@ void Program(
 
     var stopwatch = Stopwatch.StartNew();
 
-    var executor = new SequentialParserExecutor(input);
-    var csvState = executor.ComputeState<CSVState>();
+    CSVState csvState;
+    try
+    {
+        var executor = new SequentialParserExecutor(input);
+        csvState = executor.ComputeState<CSVState>();
+    } catch(ParserException e)
+    {
+        Log.Fatal("A fatal error occurred: {Message}", e.Message);
+        Environment.Exit(1);
+        return; // Unreachable
+    }
 
     stopwatch.Stop();
 

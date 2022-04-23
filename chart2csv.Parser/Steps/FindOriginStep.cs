@@ -27,12 +27,12 @@ public class FindOriginStep : ParserStep<InitialState, ChartOriginState>
             if (origin == null)
                 origin = new Pixel(i, j);
             else
-                throw new Exception("Multiple origin points found");
+                throw new ParserException("Multiple origin points found");
         }
 
         if (origin == null)
-            throw new Exception("No origin point found");
-        
+            throw new ParserException("No origin point found");
+
         Log.Debug("Found chart origin point at {@Point}", origin.Value);
         return new ChartOriginState(input, origin.Value);
     }

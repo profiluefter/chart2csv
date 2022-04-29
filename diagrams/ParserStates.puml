@@ -2,24 +2,23 @@
 
 !theme crt-green
 
-[*] --> Initial
-Initial --> ChartWithPoints : GetPoints
+!include ParserStates-simple.puml
+
 ChartWithPoints --> PointClusterImage : GenerateClusterImage
-ChartWithPoints --> MergedChart : LookAroundMergePoints
-ChartWithPoints --> MergedChart : AverageMergePoints
-Initial --> ChartOrigin : FindOrigin
-ChartWithPoints --> XAxis : DetectXAxis
-ChartOrigin --> YAxis : DetectYAxis
 
 ChartOrigin --> ChartDimensions : FindDimensions
 
-state csvJoin <<join>>
-MergedChart --> csvJoin
-XAxis --> csvJoin
-YAxis --> csvJoin
-csvJoin --> ParsedChart
+state chartLayout <<join>>
+ChartDimensions --> chartLayout
+YAxis --> chartLayout
+chartLayout --> ChartLayout
+ChartLayout --> ChartLayoutImage : GenerateLayoutImage
 
-ParsedChart --> CSV : GenerateCSV
+state chartImage <<join>>
+ChartLayoutImage --> chartImage
+LineOverlayChart --> chartImage
+chartImage --> AllDebugImages
+AllDebugImages --> CombinedDebugImage : GenerateCombinedDebugImage
 
 MergedChart --> LineOverlayChart : GenerateLineOverlay
 

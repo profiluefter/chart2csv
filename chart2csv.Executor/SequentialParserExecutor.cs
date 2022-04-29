@@ -33,8 +33,8 @@ public class SequentialParserExecutor
         if (_states.ContainsKey(type))
             return (T)_states[type];
 
-        var stopwatch = new Stopwatch();
-        stopwatch.Start();
+        var stopwatch = Stopwatch.StartNew();
+
         var calculatedState = (T)((ParserState)(type.Name switch
         {
             nameof(InitialState) => throw new Exception("Initial state is not defined"),
@@ -43,8 +43,10 @@ public class SequentialParserExecutor
             nameof(ChartOriginState) => new FindOriginStep().Process(ComputeState<InitialState>()),
             nameof(MergedChartState) => PointMergeStrategy switch
             {
-                PointMergeStrategy.LookAround => new LookAroundMergePointsStep().Process(ComputeState<ChartWithPointsState>()),
-                PointMergeStrategy.Average => new AverageMergePointsStep().Process(ComputeState<ChartWithPointsState>()),
+                PointMergeStrategy.LookAround => new LookAroundMergePointsStep().Process(
+                    ComputeState<ChartWithPointsState>()),
+                PointMergeStrategy.Average =>
+                    new AverageMergePointsStep().Process(ComputeState<ChartWithPointsState>()),
                 _ => throw new ArgumentOutOfRangeException()
             },
             nameof(XAxisState) => new DetectXAxisStep().Process(ComputeState<ChartWithPointsState>()),
@@ -56,7 +58,20 @@ public class SequentialParserExecutor
             nameof(CSVState) => new GenerateCSVStep().Process(ComputeState<ParsedChartState>()),
             nameof(ChartDimensionsState) => new FindDimensionsStep().Process(ComputeState<ChartOriginState>()),
             nameof(LineOverlayChartState) => new GenerateLineOverlayStep().Process(ComputeState<MergedChartState>()),
-            nameof(PointClusterImageState) => new GenerateClusterImage().Process(ComputeState<ChartWithPointsState>()),
+            nameof(PointClusterImageState) => new GenerateClusterImageStep().Process(
+                ComputeState<ChartWithPointsState>()),
+
+            nameof(ChartLayoutState) => new ChartLayoutState(
+                ComputeState<ChartDimensionsState>(),
+                ComputeState<YAxisState>()
+            ),
+            nameof(ChartLayoutImageState) => new GenerateLayoutImageStep().Process(ComputeState<ChartLayoutState>()),
+            nameof(AllDebugImagesState) => new AllDebugImagesState(
+                ComputeState<LineOverlayChartState>(),
+                ComputeState<ChartLayoutImageState>()
+            ),
+            nameof(CombinedDebugImageState) => new GenerateCombinedDebugImageStep().Process(
+                ComputeState<AllDebugImagesState>()),
 
             _ => throw new Exception($"Invalid state {type.FullName}"),
         }) ?? throw new Exception("Calculated state is null"));

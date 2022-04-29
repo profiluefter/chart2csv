@@ -1,0 +1,30 @@
+@startuml
+
+!theme crt-green
+
+state Initial #2665bf
+state ChartWithPoints #2665bf
+state ChartOrigin #2665bf
+state YAxis #2665bf
+state MergedChart #2665bf
+state XAxis #2665bf
+state ParsedChart #2665bf
+state CSV #2665bf
+
+[*] --> Initial
+Initial --> ChartWithPoints : GetPoints
+ChartWithPoints --> MergedChart : LookAroundMergePoints
+ChartWithPoints --> MergedChart : AverageMergePoints
+Initial --> ChartOrigin : FindOrigin
+ChartWithPoints --> XAxis : DetectXAxis
+ChartOrigin --> YAxis : DetectYAxis
+
+state csvJoin <<join>>
+MergedChart --> csvJoin
+XAxis --> csvJoin
+YAxis --> csvJoin
+csvJoin --> ParsedChart
+
+ParsedChart --> CSV : GenerateCSV
+
+@enduml

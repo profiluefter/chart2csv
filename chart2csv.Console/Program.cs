@@ -5,6 +5,7 @@ using chart2csv.Parser.States;
 using Cocona;
 using Serilog;
 using Serilog.Events;
+using SixLabors.ImageSharp;
 
 const string banner = @"
           $$\                            $$\      $$$$$$\                                 
@@ -24,6 +25,8 @@ void Program(
     string? output,
     [Option("merge-strategy", Description = "The method to use when merging points with the same X position")]
     PointMergeStrategy pointMergeStrategy = PointMergeStrategy.Average,
+    [Option("debug-files", Description = "If specified, debug graphics will be generated into the specified folder")]
+    string? debugFiles = null,
     [Option("overwrite", Description = "Overwrite the output file if it already exists")]
     bool overwrite = false,
     [Option("log-level", new[] { 'l' }, Description = "The log level of the console logger")]
@@ -88,16 +91,30 @@ void Program(
 
     Log.Debug("Output file: {Output}", output);
 
+    // if debug files are specified, create the directory and check that it doesn't already exist
+    if (debugFiles != null)
+    {
+        if (Directory.Exists(debugFiles))
+        {
+            Log.Fatal("Debug files directory already exists: {DebugFiles}", debugFiles);
+            Environment.Exit(1);
+        }
+
+        Directory.CreateDirectory(debugFiles);
+    }
+
     // -------- Convert the chart --------
 
     var stopwatch = Stopwatch.StartNew();
 
+    SequentialParserExecutor executor;
     CSVState csvState;
     try
     {
-        var executor = new SequentialParserExecutor(input);
+        executor = new SequentialParserExecutor(input);
         csvState = executor.ComputeState<CSVState>();
-    } catch(ParserException e)
+    }
+    catch (ParserException e)
     {
         Log.Fatal("A fatal error occurred: {Message}", e.Message);
         Environment.Exit(1);
@@ -111,6 +128,32 @@ void Program(
 
     Log.Information("Done. Generated {Count} CSV lines into {FileName} in {Millis} ms",
         csvState.CSVLines.Count, output, stopwatch.ElapsedMilliseconds);
+
+    // -------- Generate debug files --------
+
+    if (debugFiles != null)
+    {
+        Log.Debug("Generating debug files");
+
+        try
+        {
+            executor.ComputeState<LineOverlayChartState>().LineOverlayChart
+                .SaveAsPng(Path.Combine(debugFiles, "line-overlay.png"));
+            executor.ComputeState<PointClusterImageState>().PointClusterOverlayChart
+                .SaveAsPng(Path.Combine(debugFiles, "point-cluster.png"));
+            executor.ComputeState<ChartLayoutImageState>().ChartLayoutImage
+                .SaveAsPng(Path.Combine(debugFiles, "chart-layout.png"));
+            executor.ComputeState<CombinedDebugImageState>().CombinedDebugImage
+                .SaveAsPng(Path.Combine(debugFiles, "combined-overlay.png"));
+        }
+        catch (ParserException e)
+        {
+            Log.Fatal("Failed to generate debug files: {Message}", e.Message);
+            Environment.Exit(1);
+        }
+
+        Log.Information("Debug files written to {DebugFiles}", debugFiles);
+    }
 }
 
 CoconaApp.Run(Program);

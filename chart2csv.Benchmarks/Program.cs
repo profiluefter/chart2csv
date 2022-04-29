@@ -1,7 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 using chart2csv.Executor;
-using chart2csv.Parser.States;
 
 BenchmarkRunner.Run<ChartBenchmark>();
 
@@ -28,7 +27,7 @@ public class ChartBenchmark
     [Benchmark]
     public List<string> DefaultCSV()
     {
-        return SequentialParserExecutor.ParseImageToCSV($"charts/{InputFileName}").CSVLines;
+        return new SequentialParserExecutor($"charts/{InputFileName}").ParseImageToCSV();
     }
 
     // [Benchmark]

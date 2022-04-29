@@ -6,34 +6,29 @@ namespace chart2csv.Parser.Steps;
 
 public class FindDimensionsStep : ParserStep<ChartOriginState, ChartDimensionsState>
 {
-    private static readonly Color LineColor = Color.ParseHex("C0C0C0");
-    private static readonly Color LineXLabelColor = Color.ParseHex("A8A8A8");
-    private static readonly Color LineXEndColor = Color.ParseHex("D0D0D0");
-    private static readonly Color LineYMarkerColor = Color.ParseHex("B1B1B1");
-    private static readonly Color LineYLabelColor = Color.ParseHex("B2B2B2");
-    private static readonly Color LineYEndColor = Color.ParseHex("CFCFCF");
-    
+    private static readonly List<Color> LineColors = new[]
+    {
+        "C0C0C0", // line color
+        "A8A8A8", // x label color and y edge case
+        "D0D0D0", // x end color
+        "B1B1B1", // y marker color
+        "B2B2B2", // y label color
+        "CFCFCF", // y end color
+        "BDBDBD" // y edge case
+    }.Select(Color.ParseHex).ToList();
+
     public override ChartDimensionsState Process(ChartOriginState input)
     {
         var image = input.InitialState.InputImage;
         var origin = input.OriginPoint;
-        
+
         var chartWidth = 1;
-        while ((Color)image[origin.X + chartWidth, origin.Y] == LineColor ||
-               (Color)image[origin.X + chartWidth, origin.Y] == LineXLabelColor ||
-               (Color)image[origin.X + chartWidth, origin.Y] == LineXEndColor)
-        {
+        while (LineColors.Contains(image[origin.X + chartWidth, origin.Y]))
             chartWidth++;
-        }
 
         var chartHeight = 1;
-        while ((Color)image[origin.X, origin.Y - chartHeight] == LineColor ||
-               (Color)image[origin.X, origin.Y - chartHeight] == LineYMarkerColor ||
-               (Color)image[origin.X, origin.Y - chartHeight] == LineYLabelColor ||
-               (Color)image[origin.X, origin.Y - chartHeight] == LineYEndColor)
-        {
+        while (LineColors.Contains(image[origin.X, origin.Y - chartHeight]))
             chartHeight++;
-        }
 
         // Compensate for origin point
         chartWidth--;

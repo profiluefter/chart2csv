@@ -5,7 +5,7 @@ using SixLabors.ImageSharp.Processing;
 
 namespace chart2csv.Parser.Steps;
 
-public class GenerateClusterImage : ParserStep<ChartWithPointsState, PointClusterImageState>
+public class GenerateClusterImageStep : ParserStep<ChartWithPointsState, PointClusterImageState>
 {
     public override PointClusterImageState Process(ChartWithPointsState input)
     {

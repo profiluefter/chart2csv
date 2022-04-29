@@ -8,3 +8,5 @@ var parser = new SequentialParserExecutor(chartPath);
 parser.ComputeState<PointClusterImageState>().PointClusterOverlayChart.SaveAsPng("output-cluster.png");
 parser.ComputeState<LineOverlayChartState>().LineOverlayChart.SaveAsPng("output.png");
 File.WriteAllLines("output.csv", parser.ComputeState<CSVState>().CSVLines);
+
+parser.ComputeState<CombinedDebugImageState>().CombinedDebugImage.SaveAsPng("output-overlay.png");

@@ -2,7 +2,6 @@ using chart2csv.Parser.States;
 
 namespace chart2csv.Parser.Steps;
 
-//TODO: Debug and add logging
 public class LookAroundMergePointsStep : ParserStep<ChartWithPointsState, MergedChartState>
 {
     public override MergedChartState Process(ChartWithPointsState input)
@@ -21,27 +20,31 @@ public class LookAroundMergePointsStep : ParserStep<ChartWithPointsState, Merged
                 continue;
             }
 
+            var groupX = group.First().X;
+
             var groupAverageY = group.Average(x => x.Y);
             var maxY = group.Max(x => x.Y);
             var minY = group.Min(x => x.Y);
 
-            var previousY = processed.Last().Y;
+            var (previousX, previousY) = processed.Last();
+            var nextX = grouped[i + 1].First().X;
             var nextY = grouped[i + 1].Average(x => x.Y);
 
             var firstY = previousY > groupAverageY ? maxY : minY;
             var secondY = groupAverageY > nextY ? minY : maxY;
 
-            processed.Add(new Point(group.Key - 0.01, firstY));
-            processed.Add(new Point(group.Key + 0.01, secondY));
+            var backXMiddle = (groupX - previousX) / 2;
+            var frontXMiddle = (nextX - groupX) / 2;
 
-            if (Math.Abs(firstY - secondY) < 0.01)
-                Console.Error.WriteLine("firstY == secondY: This is probably a bug");
+            processed.Add(new Point(group.Key - backXMiddle, firstY));
 
-            var orientation = firstY > secondY ? "declining" : "ascending";
+            const double tolerance = 0.0001;
+            if (Math.Abs(firstY - secondY) < tolerance)
+            {
+                processed.Add(new Point(group.Key, Math.Abs(firstY - maxY) < tolerance ? minY : maxY));
+            }
 
-            // Console.WriteLine($"Merging at X={group.Key:0000}: previousY={previousY:000} nextY={nextY:000} " +
-            //                   $"maxY={maxY:000} minY={minY:000} firstY={firstY:000} secondY={secondY:000} " +
-            //                   $"orientation={orientation}");
+            processed.Add(new Point(group.Key + frontXMiddle, secondY));
         }
 
         processed.Add(new Point(grouped.Last().Average(x => x.X), grouped.Last().Average(x => x.Y)));

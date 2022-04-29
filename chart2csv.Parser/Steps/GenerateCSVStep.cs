@@ -8,7 +8,7 @@ public class GenerateCSVStep : ParserStep<ParsedChartState, CSVState>
     {
         var csvLines = input.MergedChart.Points
             .Select(x => (input.XAxis.GetXAxisValue(x.X), input.YAxis.GetYAxisValue(x.Y)))
-            .Select(x => $"{x.Item1:dd.MM.yyyy hh:mm};{x.Item2}")
+            .Select(x => FormattableString.Invariant($"{x.Item1:dd.MM.yyyy hh:mm};{x.Item2:0.######}"))
             .Prepend("DATE;BALANCE USD")
             .ToList();
 

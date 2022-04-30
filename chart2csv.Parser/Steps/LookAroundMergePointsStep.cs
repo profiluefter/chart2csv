@@ -10,7 +10,13 @@ public class LookAroundMergePointsStep : ParserStep<ChartWithPointsState, Merged
             .GroupBy(x => x.X)
             .ToList();
 
-        var processed = new List<Point>(grouped.Count) {grouped[0].Single()};
+        var firstGroup = grouped[0];
+
+        var firstPoint = firstGroup.Count() > 1
+            ? new Point(firstGroup.Key, firstGroup.Select(x => x.Y).Average())
+            : firstGroup.Single();
+
+        var processed = new List<Point>(grouped.Count) { firstPoint };
         for (var i = 1; i < grouped.Count - 1; i++)
         {
             var group = grouped[i];

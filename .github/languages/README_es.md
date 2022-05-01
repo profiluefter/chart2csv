@@ -31,9 +31,9 @@
   </a>
   <br>
 	 <a href="https://github.com/profiluefter/chart2csv/actions/workflows/build-cli.yml">
-	 <img alt="Console Workflow Status" src="https://img.shields.io/github/workflow/status/profiluefter/chart2csv/build-cli?label=chart2csv.Console%20Build"></a>
+	 <img alt="Console Workflow Status" src="https://github.com/profiluefter/chart2csv/actions/workflows/build-cli.yml/badge.svg"></a>
 	 <a href="https://github.com/profiluefter/chart2csv/actions/workflows/unity.yml">
-	 <img alt="FNAT Workflow Status" src="https://img.shields.io/github/workflow/status/profiluefter/chart2csv/unity?label=FNAT%20Build"></a>
+	 <img alt="FNAT Workflow Status" src="https://github.com/profiluefter/chart2csv/actions/workflows/unity.yml/badge.svg"></a>
 	 <a href="https://github.com/profiluefter/chart2csv/releases">
 		<img alt="GitHub Releases Download" src="https://img.shields.io/github/downloads/profiluefter/chart2csv/total">
 	 </a>

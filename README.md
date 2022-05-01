@@ -36,13 +36,22 @@ The application was built with [Cocona](https://github.com/mayuki/Cocona)
 Convert charts into csv
 ## How to use
 
-| Option  | Description |
+| Argument  | Description |
 | ------------- | ------------- |
-| -i --input <String> (Required) | The input file for the graph |
-| -o --output <String> (Required) | The output directory for the graph | 
-| -f --filename <String> (Optional) | The name for the output file | 
-| -d --debug (Optional) | Output with additional debug graphs | 
-| --outputonly (Optional) | Output with graph only | 
+| input (Required) | The path or filename of the image of the graph that should be converted |
+| output (Required) | Folder or filename to output the csv file to | 
 
-## Example
-![ConsoleExample](https://user-images.githubusercontent.com/71697679/157421446-c6fd58c6-e4ba-4a0f-9e4f-0087ac93c412.png)
+| Option | Description | Allowed Values |
+| ------------- | ------------- | ------------- |
+| --merge-strategy <PointMergeStrategy<a>> | Method to use when merging points with the same X position | Average (Default), LookAround |
+| -l, --log-level <LogEventLevel<a>> | The log level of the console logger | Verbose, Debug, Information (Default), Warning, Error, Fatal |
+| --debug-files <String<a>> | If specified, debug graphics will be generated into the specified folder | 
+| --overwrite | Overwrite the output file if it already exists | 
+| -v, --verbose | Outputs more information, alias for --log-level=Verbose | 
+| -s, --silent | Silent mode, no output to console |
+| -h, --help | Show help message | 
+| --version | Show version | 
+
+## Usage
+    
+chart2csv.Console [--merge-strategy <PointMergeStrategy<a>>] [--debug-files <String<a>>] [--overwrite] [--log-level <LogEventLevel<a>>] [--verbose] <br> [--silent] [--help] [--version] input output

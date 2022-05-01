@@ -10,6 +10,12 @@ jobs:
   build:
     name: Create release build
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          - win-x64
+          - linux-x64
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core
@@ -18,18 +24,18 @@ jobs:
           dotnet-version: '6.0.x'
           include-prerelease: true
       - name: Install dependencies
-        run: dotnet restore -r win-x64
+        run: dotnet restore -r ${{ matrix.targetPlatform }}
       - name: Build
         run: |
           cd chart2csv.Console
-          dotnet build -c Release -r win-x64 --no-restore --self-contained
+          dotnet build -c Release -r ${{ matrix.targetPlatform }} --no-restore --self-contained
       - name: Publish
         run: |
           cd chart2csv.Console
-          dotnet publish -c Release -r win-x64 --self-contained
+          dotnet publish -c Release -r ${{ matrix.targetPlatform }} --self-contained
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         continue-on-error: true
         with:
-          name: chart2csv.Console
-          path: chart2csv.Console/bin/Release/net6.0/win-x64/publish/chart2csv.Console.exe
+          name: chart2csv.Console-${{ matrix.targetPlatform }}
+          path: chart2csv.Console/bin/Release/net6.0/${{ matrix.targetPlatform }}/publish/chart2csv.Console.exe

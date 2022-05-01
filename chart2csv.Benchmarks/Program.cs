@@ -5,6 +5,7 @@ using chart2csv.Executor;
 BenchmarkRunner.Run<ChartBenchmark>();
 
 [MemoryDiagnoser]
+[ShortRunJob]
 public class ChartBenchmark
 {
     [Params(
@@ -30,12 +31,12 @@ public class ChartBenchmark
         return new SequentialParserExecutor($"charts/{InputFileName}").ParseImageToCSV();
     }
 
-    // [Benchmark]
-    // public List<string> LookAroundMerging()
-    // {
-    //     return new SequentialParserExecutor($"charts/{InputFileName}")
-    //     {
-    //         PointMergeStrategy = PointMergeStrategy.LookAround
-    //     }.ComputeState<CSVState>().CSVLines;
-    // }
+    [Benchmark]
+    public List<string> LookAroundMerging()
+    {
+        return new SequentialParserExecutor($"charts/{InputFileName}")
+        {
+            PointMergeStrategy = PointMergeStrategy.LookAround
+        }.ParseImageToCSV();
+    }
 }

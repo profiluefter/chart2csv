@@ -59,21 +59,24 @@ Script;Sarah Nöbauer
 Development;Fabian Gurtner, Fabian Schönberger, Tamara Wimmer, Tim Sturm
 Art & Design;Sarah Nöbauer, Fabian Gurtner
 Animation;Tim Sturm, Fabian Gurtner
-Audio;Fabian Gurtner
+Audio;Google Cloud TTS
 Testing & Review;Sarah Nöbauer
 chart2csv;Logic
-90% of code; Fabian Gurtner, Fabian Schönberger
-Missing 10%; Sarah Nöbauer, Tim Sturm, Tamara Wimmer
+90% of code;Fabian Gurtner, Fabian Schönberger
+Missing 10%;Sarah Nöbauer, Tim Sturm, Tamara Wimmer
 Debug-Outputs;Fabian Gurtner
-ReadMe; Tamara Wimmer
-CLI; Tamara Wimmer
-chart2csv;GUI
-100%;Fabian Gurtner
+chart2csv;CLI
+ReadMe;Tamara Wimmer
+v1;Tamara Wimmer
+v2;Fabian Gurtner
 chart2csv;External Libs
 Cocona;Mayuki Sawatari
 ImageSharp;Six Labors and contributors
 CSS Flags;phoca.cz
+Serilog;Serilog Contributors
 chart2csv;Tools
-FNAT;Unity
-Development;JetBrains Rider
-This program was brought to you by; VortexDota
+Unity;Game Engine
+JetBrains Rider;IDE
+GitHub;Git-Hosting, CI
+Game-CI;Unity CI
+This program was brought to you by;VortexDota

@@ -28,6 +28,14 @@
     <a href="https://github.com/profiluefter/chart2csv/blob/master/.github/languages/README_ua.md">
     <img height="20px" src="https://img.shields.io/badge/UA-flag.svg?color=555555&style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDgwMCI+DQo8cGF0aCBmaWxsPSIjM2E3NWM0IiBkPSJtMCwwaDEyMDB2ODAwaC0xMjAweiIvPg0KPHBhdGggZmlsbD0iI2Y5ZGQxNiIgZD0ibTAsNDAwaDEyMDB2NDAwaC0xMjAweiIvPg0KPC9zdmc+DQo=">
   </a>
+  <br>
+	 <a href="https://github.com/profiluefter/chart2csv/actions/workflows/build-cli.yml">
+	 <img alt="Console Workflow Status" src="https://img.shields.io/github/workflow/status/profiluefter/chart2csv/build-cli?label=chart2csv.Console%20Build"></a>
+	 <a href="https://github.com/profiluefter/chart2csv/actions/workflows/unity.yml">
+	 <img alt="FNAT Workflow Status" src="https://img.shields.io/github/workflow/status/profiluefter/chart2csv/unity?label=FNAT%20Build"></a>
+	 <a href="https://github.com/profiluefter/chart2csv/releases">
+		<img alt="GitHub Releases Download" src="https://img.shields.io/github/downloads/profiluefter/chart2csv/total">
+	 </a>
 </p>
 
 # chart2csv CLI
@@ -36,13 +44,21 @@ De applicatie is gebouwd met [Cocona](https://github.com/mayuki/Cocona)
 Zet grafieken om in csv
 ## Hoe te gebruiken
 
-| Optie | Beschrijving |
+| argument | Beschrijving |
 | ------------- | ------------- |
-| -i --input <String> (vereist) | Het invoerbestand voor de grafiek |
-| -o --output <String> (vereist) | De uitvoermap voor de grafiek |
-| -f --filename <String> (optioneel) | De naam voor het uitvoerbestand |
-| -d --debug (optioneel) | Uitvoer met extra debuggrafieken |
-| --outputonly (optioneel) | Uitvoer alleen met grafiek |
+| invoer (verplicht) | Het pad of de bestandsnaam van de afbeelding van de grafiek die moet worden geconverteerd |
+| uitgang (verplicht) | Map- of bestandsnaam om CSV-bestand uit te voeren |
 
-## Voorbeeld
-![ConsoleVoorbeeld](https://user-images.githubusercontent.com/71697679/157421446-c6fd58c6-e4ba-4a0f-9e4f-0087ac93c412.png)
+| opties | Beschrijving | Toegestane waarden |
+| ------------- | ------------- | ------------- |
+| --merge-strategy <PointMergeStrategy<a>> | Methode voor het samenvoegen van punten met dezelfde X-positie | Average (standaard), LookAround |
+| -l, --log-level <LogEventLevel<a>> | Het logniveau van consoleregistratie | Verbose, Debug, Information (standaard), Warning, Error, Fatal |
+| --debug-files <String<a>> | Indien opgegeven, worden foutopsporingsafbeeldingen gegenereerd in de opgegeven map |
+| --overwrite | Overschrijft het uitvoerbestand als het al bestaat |
+| -v, --verbose | Drukt meer informatie af, alias voor --log-level=Uitgebreide |
+| -s, --silent | Stille modus, geen uitvoer naar console |
+| -h, --help | Help-bericht weergeven |
+| --version | bekijk versie |
+
+## Gebruik
+chart2csv.Console [--merge-strategy <PointMergeStrategy<a>>] [--debug-files <String<a>>] [--overwrite] [--log-level <LogEventLevel<a>>] [--verbose] <br> [--silent] [--help] [--version] input output

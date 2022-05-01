@@ -29,6 +29,14 @@
     <a href="https://github.com/profiluefter/chart2csv/blob/master/.github/languages/README_ua.md">
     <img height="20px" src="https://img.shields.io/badge/UA-flag.svg?color=00D3B6&style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDgwMCI+DQo8cGF0aCBmaWxsPSIjM2E3NWM0IiBkPSJtMCwwaDEyMDB2ODAwaC0xMjAweiIvPg0KPHBhdGggZmlsbD0iI2Y5ZGQxNiIgZD0ibTAsNDAwaDEyMDB2NDAwaC0xMjAweiIvPg0KPC9zdmc+DQo=">
   </a>
+  <br>
+	 <a href="https://github.com/profiluefter/chart2csv/actions/workflows/build-cli.yml">
+	 <img alt="Console Workflow Status" src="https://img.shields.io/github/workflow/status/profiluefter/chart2csv/build-cli?label=chart2csv.Console%20Build"></a>
+	 <a href="https://github.com/profiluefter/chart2csv/actions/workflows/unity.yml">
+	 <img alt="FNAT Workflow Status" src="https://img.shields.io/github/workflow/status/profiluefter/chart2csv/unity?label=FNAT%20Build"></a>
+	 <a href="https://github.com/profiluefter/chart2csv/releases">
+		<img alt="GitHub Releases Download" src="https://img.shields.io/github/downloads/profiluefter/chart2csv/total">
+	 </a>
 </p>
     
 # chart2csv CLI
@@ -37,13 +45,21 @@
 Перетворіть діаграми в csv
 ## Як користуватись
 
-| Варіант | Опис |
+| аргумент | Опис |
 | ------------ | ------------ |
-| -i --input <рядок> (обов'язково) | Вхідний файл для графіка |
-| -o --output <рядок> (обов'язково) | Вихідний каталог для графіка |
-| -f --filename <рядок> (необов'язково) | Ім'я вихідного файлу |
-| -d --debug (необов'язково) | Вихід з додатковими графіками налагодження |
-| --outputonly (необов'язково) | Виведення лише з графіком |
+| введення (обов'язково) | Шлях або ім'я файлу зображення діаграми для перетворення |
+| вихід (Обов'язково) | Ім'я папки або файлу для виведення файлу CSV |
 
-## Приклад
-![ConsoleExample](https://user-images.githubusercontent.com/71697679/157421446-c6fd58c6-e4ba-4a0f-9e4f-0087ac93c412.png)
+| варіанти | Опис | Дозволені значення |
+| ------------ | ------------ | ------------ |
+| --merge-strategy <PointMergeStrategy<a>> | Метод злиття точок з однаковою позицією X | Average (за замовчуванням), LookAround |
+| -l, --log-level <LogEventLevel<a>> | Рівень журналу консольного журналу | Verbose, Debug, Information (за замовчуванням), Warning, Error, Fatal |
+| --debug-files <String<a>> | Якщо вказано, налагоджувальна графіка буде створена у вказаній папці |
+| --overwrite | Перезаписує вихідний файл, якщо він уже існує |
+| -v, --verbose | Друкує додаткову інформацію, псевдонім для --log-level=Докладний |
+| -s, --silent | Тихий режим, без виводу на консоль |
+| -h, --help | Показати довідкове повідомлення |
+| --version | переглянути версію |
+
+## Використовуйте
+chart2csv.Console [--merge-strategy <PointMergeStrategy<a>>] [--debug-files <String<a>>] [--overwrite] [--log-level <LogEventLevel<a>>] [--verbose] <br> [--silent] [--help] [--version] input output

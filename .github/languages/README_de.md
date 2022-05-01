@@ -28,6 +28,15 @@
     <a href="https://github.com/profiluefter/chart2csv/blob/master/.github/languages/README_ua.md">
     <img height="20px" src="https://img.shields.io/badge/UA-flag.svg?color=555555&style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDgwMCI+DQo8cGF0aCBmaWxsPSIjM2E3NWM0IiBkPSJtMCwwaDEyMDB2ODAwaC0xMjAweiIvPg0KPHBhdGggZmlsbD0iI2Y5ZGQxNiIgZD0ibTAsNDAwaDEyMDB2NDAwaC0xMjAweiIvPg0KPC9zdmc+DQo=">
   </a>
+
+  <br>
+     <a href="https://github.com/profiluefter/chart2csv/actions/workflows/build-cli.yml">
+     <img alt="Console Workflow Status" src="https://img.shields.io/github/workflow/status/profiluefter/chart2csv/build-cli?label=chart2csv.Console%20Build"></a>
+     <a href="https://github.com/profiluefter/chart2csv/actions/workflows/unity.yml">
+     <img alt="FNAT Workflow Status" src="https://img.shields.io/github/workflow/status/profiluefter/chart2csv/unity?label=FNAT%20Build"></a>
+     <a href="https://github.com/profiluefter/chart2csv/releases">
+     	<img alt="GitHub Releases Download" src="https://img.shields.io/github/downloads/profiluefter/chart2csv/total">
+     </a>
 </p>
 
 
@@ -37,13 +46,21 @@ Die Anwendung wurde mit [Cocona](https://github.com/mayuki/Cocona) erstellt.
 Konvertieren Sie Diagramme in csv
 ## Wie benutzt man die Applikation
 
-| Option | Beschreibung |
+| Argument | Beschreibung |
 | ------------- | ------------- |
-| -i --input <Zeichenfolge> (erforderlich) | Die Eingabedatei für das Diagramm |
-| -o --output <Zeichenfolge> (erforderlich) | Das Ausgabeverzeichnis für das Diagramm |
-| -f --filename <Zeichenfolge> (Optional) | Der Name für die Ausgabedatei |
-| -d --debug (Optional) | Ausgabe mit zusätzlichen Debug-Grafiken |
-| --outputonly (Optional) | Ausgabe nur mit Grafik |
+| input (erforderlich) | Der Pfad oder Dateiname des Bildes des Diagramms, das konvertiert werden soll |
+| output (Erforderlich) | Ordner oder Dateiname zur Ausgabe der CSV-Datei |
 
-## Beispiel
-![Konsolenbeispiel](https://user-images.githubusercontent.com/71697679/157421446-c6fd58c6-e4ba-4a0f-9e4f-0087ac93c412.png)
+| Option | Beschreibung | Zulässige Werte |
+| ------------- | ------------- | ------------- |
+| --merge-strategy <PointMergeStrategy<a>> | Methode zum Zusammenführen von Punkten mit derselben X-Position | Average (Standard), LookAround |
+| -l, --log-level <LogEventLevel<a>> | Die Protokollebene der Konsolenprotokollierung | Verbose, Debug, Information (Standard), Warning, Error, Fatal |
+| --debug-files <String<a>> | Falls angegeben, werden Debug-Grafiken im angegebenen Ordner generiert |
+| --overwrite | Überschreibt die Ausgabedatei, falls sie bereits vorhanden ist |
+| -v, --verbose | Gibt weitere Informationen aus, Alias ​​für --log-level=Verbose |
+| -s, --silent | Stiller Modus, keine Ausgabe an die Konsole |
+| -h, --help | Hilfemeldung anzeigen |
+| --version | Version anzeigen |
+
+## Verwendung
+chart2csv.Console [--merge-strategy <PointMergeStrategy<a>>] [--debug-files <String<a>>] [--overwrite] [--log-level <LogEventLevel<a>>] [--verbose] <br> [--silent] [--help] [--version] input output

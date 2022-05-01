@@ -30,6 +30,14 @@
     <a href="https://github.com/profiluefter/chart2csv/blob/master/.github/languages/README_ua.md">
     <img height="20px" src="https://img.shields.io/badge/UA-flag.svg?color=555555&style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDgwMCI+DQo8cGF0aCBmaWxsPSIjM2E3NWM0IiBkPSJtMCwwaDEyMDB2ODAwaC0xMjAweiIvPg0KPHBhdGggZmlsbD0iI2Y5ZGQxNiIgZD0ibTAsNDAwaDEyMDB2NDAwaC0xMjAweiIvPg0KPC9zdmc+DQo=">
   </a>
+  <br>
+	 <a href="https://github.com/profiluefter/chart2csv/actions/workflows/build-cli.yml">
+	 <img alt="Console Workflow Status" src="https://img.shields.io/github/workflow/status/profiluefter/chart2csv/build-cli?label=chart2csv.Console%20Build"></a>
+	 <a href="https://github.com/profiluefter/chart2csv/actions/workflows/unity.yml">
+	 <img alt="FNAT Workflow Status" src="https://img.shields.io/github/workflow/status/profiluefter/chart2csv/unity?label=FNAT%20Build"></a>
+	 <a href="https://github.com/profiluefter/chart2csv/releases">
+		<img alt="GitHub Releases Download" src="https://img.shields.io/github/downloads/profiluefter/chart2csv/total">
+	 </a>
 </p>
     
     
@@ -40,13 +48,22 @@
 チャートをcsvに変換
 ## 使い方
 
-| オプション  | 説明 |
+|引数|説明|
 | ------------- | ------------- |
-| -i --input <String> (必須) | グラフの入力ファイル |
-| -o --output <String> (必須) | グラフの出力ディレクトリ | 
-| -f --filename <String> (オプション) | 出力ファイルの名前 | 
-| -d --debug (オプション) | 追加のデバッググラフを使用して出力 | 
-| --outputonly (オプション) | グラフのみで出力 | 
+|入力（必須）|変換するチャートの画像のパスまたはファイル名|
+|出力（必須）| CSVファイルを出力するフォルダまたはファイル名|
 
-## 例
-![ConsoleExample](https://user-images.githubusercontent.com/71697679/157421446-c6fd58c6-e4ba-4a0f-9e4f-0087ac93c412.png)
+|オプション|説明|許容値|
+| ------------- | ------------- | ------------- |
+| --merge-strategy <PointMergeStrategy<a>> |同じX位置のポイントをマージする方法|Average（デフォルト）, LookAround |
+| -l -log-level <LogEventLevel<a>> |コンソールログのログレベル|Verbose, Debug, Information（デフォルト）, Warning, Error, Fatal |
+| --debug-files <String<a>> |指定した場合、デバッググラフィックは指定したフォルダに生成されます|
+| --overwrite |出力ファイルがすでに存在する場合は上書きします |
+| -v -verbose |詳細情報、-log-level=Verboseのエイリアスを出力します |
+| -s -silent |静音モード、コンソールへの出力なし |
+| -h -help |ヘルプメッセージを表示する |
+| --version |バージョンを表示 |
+
+
+## 使用する
+chart2csv.Console [--merge-strategy <PointMergeStrategy<a>>] [--debug-files <String<a>>] [--overwrite] [--log-level <LogEventLevel<a>>] [--verbose] <br> [--silent] [--help] [--version] input output

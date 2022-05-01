@@ -28,6 +28,14 @@
     <a href="https://github.com/profiluefter/chart2csv/blob/master/.github/languages/README_ua.md">
     <img height="20px" src="https://img.shields.io/badge/UA-flag.svg?color=555555&style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDgwMCI+DQo8cGF0aCBmaWxsPSIjM2E3NWM0IiBkPSJtMCwwaDEyMDB2ODAwaC0xMjAweiIvPg0KPHBhdGggZmlsbD0iI2Y5ZGQxNiIgZD0ibTAsNDAwaDEyMDB2NDAwaC0xMjAweiIvPg0KPC9zdmc+DQo=">
   </a>
+  <br>
+	 <a href="https://github.com/profiluefter/chart2csv/actions/workflows/build-cli.yml">
+	 <img alt="Console Workflow Status" src="https://img.shields.io/github/workflow/status/profiluefter/chart2csv/build-cli?label=chart2csv.Console%20Build"></a>
+	 <a href="https://github.com/profiluefter/chart2csv/actions/workflows/unity.yml">
+	 <img alt="FNAT Workflow Status" src="https://img.shields.io/github/workflow/status/profiluefter/chart2csv/unity?label=FNAT%20Build"></a>
+	 <a href="https://github.com/profiluefter/chart2csv/releases">
+		<img alt="GitHub Releases Download" src="https://img.shields.io/github/downloads/profiluefter/chart2csv/total">
+	 </a>
 </p>
 
 
@@ -45,5 +53,21 @@ Konvertierens Diagramme in csv
 | -d --debug (optional) | Ausgobe mid zusätzliche Debug-Grafikn |
 | --outputonly (optional) | Ausgobe nur mid Grafik |
 
-## Beispü
-![Konsolnbeispü](https://user-images.githubusercontent.com/71697679/157421446-c6fd58c6-e4ba-4a0f-9e4f-0087ac93c412.png)
+| Argument | Beschreibung |
+| ------------- | ------------- |
+| input (erforderlich) | Da Pfad oder Dateinom des Büds des Diagramms, das konvertiert werdn soi |
+| output (erforderlich) | Ordner oder Dateinom zur Ausgobe der CSV-Datei |
+
+| Option | Beschreibung | Zulässige Werte |
+| ------------- | ------------- | ------------- |
+| --merge-strategy <PointMergeStrategy<a>> | Methode zum Zaumführen von Punktn mit dersöbn X-Position | Average (Standard), LookAround |
+| -l, --log-level <LogEventLevel<a>> | D'Protokollebne der Konsoinprotokollierung | Verbose, Debug, Information (Standard), Warning, Error, Fatal |
+| --debug-files <String<a>> | Fois angegebn, werdn Debug-Grafiken im ongegebnen Ordner generiert |
+| --overwrite | Übaschreibt d'Ausgobedatei, fois de bereits vorhanden is |
+| -v, --verbose | Gibt weitre Informationen aus, Alias ​​fia --log-level=Verbose |
+| -s, --silent | Stiller Modus, koane Ausgobn an de Konsoin |
+| -h, --help | Hüfemödung onzoagen |
+| --version | Version onzoagen |
+
+## Vawendung
+chart2csv.Console [--merge-strategy <PointMergeStrategy<a>>] [--debug-files <String<a>>] [--overwrite] [--log-level <LogEventLevel<a>>] [--verbose] <br> [--silent] [--help] [--version] input output

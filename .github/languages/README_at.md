@@ -45,14 +45,6 @@ D'Onwendung wuad mid [Cocona](https://github.com/mayuki/Cocona) erstöhd.
 Konvertierens Diagramme in csv
 ## Wie benutzt ma d'Applikation
 
-| Option | Beschreibung |
-| ------------- | ------------- |
-| -i --input <Zeichnfolge> (erforderlich) | d'Eingobedatei füas Diagramm |
-| -o --output <Zeichnfolge> (erforderlich) | as Ausgobevazeichnis füas Diagramm |
-| -f --filename <Zeichnfolge> (optional) | Da Nom füa d'Ausgobedatei |
-| -d --debug (optional) | Ausgobe mid zusätzliche Debug-Grafikn |
-| --outputonly (optional) | Ausgobe nur mid Grafik |
-
 | Argument | Beschreibung |
 | ------------- | ------------- |
 | input (erforderlich) | Da Pfad oder Dateinom des Büds des Diagramms, das konvertiert werdn soi |
